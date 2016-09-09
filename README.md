@@ -1,8 +1,3 @@
-# web-dev-template
+# CS 5610 - Web Development - Fall 2016
 
-1. git clone https://github.com/jannunzi/web-dev-template.git
-1. cd web-dev-template
-1. npm install
-1. mongod
-1. node server.js
-1. browse to localhost:3000
+This repository hosts the entire code/work done for the course CS 5610 - Web Development for the Fall 2016 semester by Sriharsha Srinivasa Karthik Kaipa.

@@ -1,62 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="Homepage">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Karthik's Homepage</title>
-    <link href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.1/angular-material.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css" rel="stylesheet"/>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-touch.min.js"></script>
-    <script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.1/angular-material.js"></script>
-    <style>
-        .contentdemoBasicUsage div.demo-content {
-            height: 450px; }
-
-        .contentdemoBasicUsage div[ng-controller] {
-            height: 100%;
-            padding-bottom: 15px; }
-
-        .contentdemoBasicUsage md-content {
-            padding: 24px; }
-
-    </style>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-aria.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-messages.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-touch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="controllers/about.controller.client.js"></script>
+    <script src="controllers/contact.controller.client.js"></script>
+    <script src="controllers/landing.controller.client.js"></script>
 </head>
 <body>
-
-<div ng-controller="AppCtrl" layout="column" ng-cloak="" class="contentdemoBasicUsage" ng-app="MyApp">
-    <md-toolbar class="md-warn">
-        <div class="md-toolbar-tools">
-            <h2 class="md-flex">Toolbar: md-warn</h2>
-        </div>
-    </md-toolbar>
-
-    <md-content layout="row">
-        <md-content class="md-whiteframe-z3" flex="40%">
-            <h1>blurg</h1>
-        </md-content>
-    </md-content>
-
-</div>
-
-<!--
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
--->
-
-    <script type="text/javascript">
-
-        angular.module('MyApp',['ngMaterial'])
-
-                .controller('AppCtrl', function($scope) {
-
-                });
-
-
-    </script>
+    <div ng-view></div>
 </body>
 </html>

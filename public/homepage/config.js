@@ -1,7 +1,7 @@
 (function () {
     angular
         .module('Homepage')
-        .config(Config);
+        .config(Config).run(function ($route) {});
     
     function Config($routeProvider) {
         $routeProvider

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Web App Maker - Edit Image Widget</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text no-padding pull-left">
+                <a href="widget-list.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left">
+                    </span>
+                </a>
+            </div>
+            <div class="nav-sidebar no-padding col-sm-6 col-md-7">
+                <div class="navbar-header pull-left">
+                    <a class="navbar-brand navbrand">
+                        Widgets
+                    </a>
+                </div>
+                <p class="navbar-text pull-right">
+                    <a href="widget-chooser.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-plus">
+                        </span>
+                    </a>
+                </p>
+            </div>
+            <div class="col-sm-4 col-md-3 no-padding">
+                <div class="navbar-header pull-left">
+                    <a class="navbar-brand navbrand no-mar">
+                        Widget Edit
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-text pull-right">
+                <a href="widget-list.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok">
+                    </span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="no-padding no-padding-right sidebar col-sm-6 col-md-7">
+            <div>
+                <div class="widget-edit widget-edit-landscape">
+                    <a href="widget-heading.html">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </div>
+                <div>
+                    <h1>GIZMODO</h1>
+                </div>
+            </div>
+
+            <div>
+                <div class="widget-edit widget-edit-landscape">
+                    <a href="widget-heading.html">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </div>
+                <div>
+                    <h3>Everything You Need to Know About Tomorrow's Rogue One Toyapalooza</h3>
+                </div>
+            </div>
+
+            <div>
+                <div class="widget-edit widget-edit-landscape">
+                    <a href="widget-image.html">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </div>
+                <div>
+                    <img src="https://i.kinja-img.com/gawker-media/image/upload/s--UxEjGdUK--/c_scale,fl_progressive,q_80,w_800/g1izrybyns7v8ibwbxhm.png"
+                         width="100%">
+                </div>
+            </div>
+
+            <div>
+                <div class="widget-edit widget-edit-landscape">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </div>
+                <div>
+                    <p>Having the merchandise for a movie we know relatively little about available almost three months before said movie is actually in theaters sounds really weird. But a) this is <a href="http://io9.gizmodo.com/how-star-wars-insane-toy-frenzy-changed-movies-forever-1747164998" rel="nofollow"><em>Star Wars</em>, merchandising behemoth</a>, and b), it’s basically what Disney will do now for every <em>Star Wars</em> movie going forward after the success o<a href="http://gizmodo.com/the-best-star-wars-loot-from-force-friday-1728756436" target="_blank" rel="noopener">f <em>The Force Awakens</em>’ own “Force Friday” last year</a>.</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="widget-edit widget-edit-landscape">
+                    <a href="widget-heading.html">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </div>
+                <div>
+                    <h3>Dropping an iPhone Off the World's Tallest Building Is as Crazy as It Sounds</h3>
+                </div>
+            </div>
+
+            <div>
+                <div class="widget-edit widget-edit-landscape">
+                    <a href="widget-youtube.html">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </div>
+                <div class="youtube-widget">
+                    <iframe width="100%" src="https://www.youtube.com/embed/QGGPSV_sUNY" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-5 inverse-sidebar">
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input id="name"
+                           type="text"
+                           class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="text">Text</label>
+                    <input id="text"
+                           type="text"
+                           class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="url">URL</label>
+                    <input id="url"
+                           type="url"
+                           class="form-control"
+                           value="https://i.kinja-img.com/gawker-media/image/upload/s--UxEjGdUK--/c_scale,fl_progressive,q_80,w_800/g1izrybyns7v8ibwbxhm.png">
+                </div>
+                <div class="form-group">
+                    <label for="width">Width</label>
+                    <input id="width"
+                           type="text"
+                           class="form-control"
+                           value="100%">
+                </div>
+                <div class="form-group">
+                    <label for="upload">Upload</label>
+                    <input id="upload"
+                           type="file"
+                           class="form-control">
+                </div>
+            </form>
+
+            <a href="widget-list.html"
+               class="btn btn-block btn-primary">
+                Upload
+            </a>
+            <a href="widget-list.html"
+               class="btn btn-block btn-danger">
+                Delete
+            </a>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="container-fluid">
+            <p class="navbar-text pull-right">
+                <a href="profile.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-user">
+                    </span>
+                </a>
+            </p>
+        </div>
+    </nav>
+</body>
+</html>

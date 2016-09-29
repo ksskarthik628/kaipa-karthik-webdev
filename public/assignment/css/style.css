@@ -70,6 +70,8 @@ nav div a span.glyphicon {
 @media (min-width: 768px) {
     .sidebar {
         display: block;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     .nav-sidebar {
@@ -83,6 +85,10 @@ nav div a span.glyphicon {
 
     .inverse-nav-sidebar {
         display: none;
+    }
+
+    .widget-edit-landscape {
+        right: 0;
     }
 }
 

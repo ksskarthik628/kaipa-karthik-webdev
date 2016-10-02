@@ -7,7 +7,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css" rel="stylesheet"/>
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
@@ -28,43 +28,45 @@
 </head>
 <body>
 
-    <div ui-view>
-        <div id="landing" class="top transparent" layout="column" layout-fill>
-            <md-content class="transparent" flex layout="column">
-                <md-content class="transparent" flex layout="row" layout-align="center" layout-padding layout-margin>
-                    <md-content class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
+<div ui-view>
+    <div id="landing" class="top" layout="column" layout-fill style="background-color: transparent;">
+        <md-content flex layout="column" style="background-color: transparent;">
+            <md-content flex layout="row" layout-align="center" layout-padding layout-margin style="background-color: transparent;">
+                <md-content class="md-whiteframe-z2" style="" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
+                    <div>
                         <p>Landing</p>
                         <button ng-click="model.route('about')">About</button> <br />
                         <button ng-click="model.route('contact')">Contact</button>
-                    </md-content>
+                    </div>
                 </md-content>
             </md-content>
-        </div>
-
-        <div id="about" class="top transparent" layout="column" layout-fill>
-            <md-content class="transparent" flex layout="column">
-                <md-content class="transparent" flex layout="row" layout-align="center" layout-padding layout-margin>
-                    <md-content class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
-                        <p>About</p>
-                        <button ng-click="model.route('landing')">Landing</button> <br />
-                        <button ng-click="model.route('contact')">Contact</button>
-                    </md-content>
-                </md-content>
-            </md-content>
-        </div>
-
-        <div id="contact" class="top transparent" layout="column" layout-fill>
-            <md-content class="transparent" flex layout="column">
-                <md-content class="transparent" flex layout="row" layout-align="center" layout-padding layout-margin>
-                    <md-content class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
-                        <p>Contact</p>
-                        <button ng-click="model.route('landing')">Landing</button> <br />
-                        <button ng-click="model.route('about')">About</button>
-                    </md-content>
-                </md-content>
-            </md-content>
-        </div>
+        </md-content>
     </div>
+
+    <div id="about" class="top" layout="column" layout-fill>
+        <md-content flex layout="column">
+            <md-content flex layout="row" layout-align="center" layout-padding layout-margin>
+                <md-content class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
+                    <p>About</p>
+                    <button ng-click="model.route('landing')">Landing</button> <br />
+                    <button ng-click="model.route('contact')">Contact</button>
+                </md-content>
+            </md-content>
+        </md-content>
+    </div>
+
+    <div id="contact" class="top" layout="column" layout-fill>
+        <md-content flex layout="column">
+            <md-content flex layout="row" layout-align="center" layout-padding layout-margin>
+                <md-content class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
+                    <p>Contact</p>
+                    <button ng-click="model.route('landing')">Landing</button> <br />
+                    <button ng-click="model.route('about')">About</button>
+                </md-content>
+            </md-content>
+        </md-content>
+    </div>
+</div>
 
 </body>
 </html>

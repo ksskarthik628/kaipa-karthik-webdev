@@ -8,17 +8,25 @@
         vm.landingIndex = 3;
         vm.aboutIndex = 2;
         vm.contactIndex = 1;
-        vm.landing = $('#landing');
-        vm.about = $('#about');
-        vm.contact = $('#contact');
-        vm.width = $(window).width();
+        vm.landing = jQuery('#landing');
+        vm.about = jQuery('#about');
+        vm.contact = jQuery('#contact');
+        vm.width = jQuery(window).width();
         vm.time = 750;
+        vm.heading = jQuery('#heading');
+        vm.headingText = jQuery('#heading-text');
         vm.route = route;
 
         function init() {
             vm.landing.css('z-index', vm.landingIndex);
             vm.about.css('z-index', vm.aboutIndex);
             vm.contact.css('z-index', vm.contactIndex);
+            // vm.heading.typed({
+            //     stringsElement: vm.headingText,
+            //     typeSpeed: 100,
+            //     loop: false,
+            //     contentType: 'text'
+            // });
         }
         init();
 

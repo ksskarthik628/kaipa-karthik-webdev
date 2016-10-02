@@ -8,6 +8,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css" rel="stylesheet"/>
     <link href="css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"/>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
@@ -25,6 +26,8 @@
     <script src="controllers/about.controller.client.js"></script>
     <script src="controllers/contact.controller.client.js"></script>
     <script src="controllers/landing.controller.client.js"></script>
+    <script src="js/typed.js"></script>
+    <script src="js/script.js"></script>
 </head>
 <body>
 
@@ -33,9 +36,20 @@
             <md-content class="transparent" flex layout="column">
                 <md-content class="transparent" flex layout="row" layout-align="center" layout-padding layout-margin>
                     <md-content class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
-                        <p>Landing</p>
-                        <button ng-click="model.route('about')">About</button> <br />
-                        <button ng-click="model.route('contact')">Contact</button>
+                        <div layout="column" layout-align="center center" layout-fill>
+                            <div id="heading-text"><h3>REPORT : KARTHIK</h3></div>
+                            <h3 id="heading"></h3>
+                            <md-content>
+                                <md-list flex>
+                                    <md-list-item class="md-3-line" ng-click="model.route('about')">
+                                        1. What is a Karthik?
+                                    </md-list-item>
+                                    <md-list-item class="md-3-line" ng-click="model.route('contact')">
+                                        2. Where is a Karthik?
+                                    </md-list-item>
+                                </md-list>
+                            </md-content>
+                        </div>
                     </md-content>
                 </md-content>
             </md-content>
@@ -45,9 +59,11 @@
             <md-content class="transparent" flex layout="column">
                 <md-content class="transparent" flex layout="row" layout-align="center" layout-padding layout-margin>
                     <md-content class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
-                        <p>About</p>
-                        <button ng-click="model.route('landing')">Landing</button> <br />
-                        <button ng-click="model.route('contact')">Contact</button>
+                        <div layout="column" layout-align="center center" layout-fill>
+                            <p>About</p>
+                            <button ng-click="model.route('landing')">Landing</button> <br />
+                            <button ng-click="model.route('contact')">Contact</button>
+                        </div>
                     </md-content>
                 </md-content>
             </md-content>
@@ -57,9 +73,11 @@
             <md-content class="transparent" flex layout="column">
                 <md-content class="transparent" flex layout="row" layout-align="center" layout-padding layout-margin>
                     <md-content class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
-                        <p>Contact</p>
-                        <button ng-click="model.route('landing')">Landing</button> <br />
-                        <button ng-click="model.route('about')">About</button>
+                        <div layout="column" layout-align="center center" layout-fill>
+                            <p>Contact</p>
+                            <button ng-click="model.route('landing')">Landing</button> <br />
+                            <button ng-click="model.route('about')">About</button>
+                        </div>
                     </md-content>
                 </md-content>
             </md-content>

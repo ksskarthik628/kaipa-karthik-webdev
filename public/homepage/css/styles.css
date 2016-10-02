@@ -1,6 +1,7 @@
 body {
     overflow-x: hidden;
     overflow-y: hidden;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .top {
@@ -11,4 +12,8 @@ body {
 
 .transparent {
     background-color: transparent;
+}
+
+.typed-cursor {
+    display: none;
 }

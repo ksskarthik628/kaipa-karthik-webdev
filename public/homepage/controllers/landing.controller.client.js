@@ -3,30 +3,29 @@
         .module('Homepage')
         .controller('LandingController', LandingController);
 
-    function LandingController($state) {
+    function LandingController($state, $location, $window) {
         var vm = this;
-        vm.landingIndex = 3;
-        vm.aboutIndex = 2;
-        vm.contactIndex = 1;
-        vm.landing = jQuery('#landing');
-        vm.about = jQuery('#about');
-        vm.contact = jQuery('#contact');
-        vm.width = jQuery(window).width();
+        vm.landingIndex = 4;
+        vm.aboutIndexStart = 3;
+        vm.contactIndexStart = 2;
+        vm.skillsIndexStart = 1;
+        vm.aboutIndexEnd = 5;
+        vm.contactIndexEnd = 5;
+        vm.skillsIndexEnd = 5;
+        vm.landing = $('#landing');
+        vm.about = $('#about');
+        vm.contact = $('#contact');
+        vm.skills = $('#skills');
+        vm.width = $(window).width();
         vm.time = 750;
-        vm.heading = jQuery('#heading');
-        vm.headingText = jQuery('#heading-text');
+        vm.address = $location.absUrl().split('/');
         vm.route = route;
 
         function init() {
             vm.landing.css('z-index', vm.landingIndex);
-            vm.about.css('z-index', vm.aboutIndex);
-            vm.contact.css('z-index', vm.contactIndex);
-            // vm.heading.typed({
-            //     stringsElement: vm.headingText,
-            //     typeSpeed: 100,
-            //     loop: false,
-            //     contentType: 'text'
-            // });
+            vm.about.css('z-index', vm.aboutIndexStart);
+            vm.contact.css('z-index', vm.contactIndexStart);
+            vm.skills.css('z-index', vm.skillsIndexStart);
         }
         init();
 
@@ -37,7 +36,7 @@
                     vm.about
                         .velocity({translateX: vm.width}, {
                             duration: vm.time, easing: "easeInOut", complete: function () {
-                                vm.about.css('z-index', 4);
+                                vm.about.css('z-index', vm.aboutIndexEnd);
                             }
                         })
                         .velocity("reverse", {
@@ -50,7 +49,7 @@
                     vm.contact
                         .velocity({translateX: vm.width}, {
                             duration: vm.time, easing: "easeInOut", complete: function () {
-                                vm.contact.css('z-index', 4);
+                                vm.contact.css('z-index', vm.contactIndexEnd);
                             }
                         })
                         .velocity("reverse", {
@@ -58,6 +57,28 @@
                                 $state.go(toState);
                             }
                         });
+                    break;
+                case 'skills':
+                    vm.skills
+                        .velocity({translateX: vm.width}, {
+                            duration: vm.time, easing: "easeInOut", complete: function () {
+                                vm.contact.css('z-index', vm.skillsIndexEnd);
+                            }
+                        })
+                        .velocity("reverse", {
+                            duration: vm.time, easing: "easeInOut", complete: function () {
+                                $state.go(toState);
+                            }
+                        });
+                    break;
+                case 'github':
+                    $window.location.href = "https://github.com/ksskarthik628";
+                    break;
+                case 'wam':
+                    $window.location.href = vm.address[0] + "//" + vm.address[2] + "/" + "assignment";
+                    break;
+                case 'wc':
+                    $window.location.href = vm.address[0] + "//" + vm.address[2] + "/" + "project";
                     break;
             }
         }

@@ -22,6 +22,11 @@
                 url: "/contact",
                 controller: "ContactController",
                 controllerAs: "model"
+            })
+            .state("skills", {
+                url: "/skills",
+                controller: "SkillsController",
+                controllerAs: "model"
             });
     }
 })();

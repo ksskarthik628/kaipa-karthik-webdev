@@ -41,11 +41,23 @@
                             <h3 id="heading"></h3>
                             <md-content>
                                 <md-list flex>
-                                    <md-list-item class="md-3-line" ng-click="model.route('about')">
-                                        1. What is a Karthik?
+                                    <md-list-item class="md-1-line" ng-click="model.route('about')">
+                                        1. Who is he?
                                     </md-list-item>
-                                    <md-list-item class="md-3-line" ng-click="model.route('contact')">
-                                        2. Where is a Karthik?
+                                    <md-list-item class="md-1-line" ng-click="model.route('contact')">
+                                        2. Where is he?
+                                    </md-list-item>
+                                    <md-list-item class="md-1-line" ng-click="model.route('skills')">
+                                        3. What does he know?
+                                    </md-list-item>
+                                    <md-list-item class="md-1-line" ng-click="model.route('github')">
+                                        4. What has he done?
+                                    </md-list-item>
+                                    <md-list-item class="md-1-line" ng-click="model.route('wam')">
+                                        5. Web App Maker
+                                    </md-list-item>
+                                    <md-list-item class="md-1-line" ng-click="model.route('wc')">
+                                        6. Writers' Corner
                                     </md-list-item>
                                 </md-list>
                             </md-content>
@@ -77,6 +89,20 @@
                             <p>Contact</p>
                             <button ng-click="model.route('landing')">Landing</button> <br />
                             <button ng-click="model.route('about')">About</button>
+                        </div>
+                    </md-content>
+                </md-content>
+            </md-content>
+        </div>
+
+        <div id="skills" class="top transparent" layout="column" layout-fill>
+            <md-content class="transparent" flex layout="column">
+                <md-content class="transparent" flex layout="row" layout-align="center" layout-padding layout-margin>
+                    <md-content class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
+                        <div layout="column" layout-align="center center" layout-fill>
+                            <p>Skills</p>
+                            <button ng-click="model.route('landing')">Landing</button> <br />
+                            <button ng-click="model.route('contact')">Contact</button>
                         </div>
                     </md-content>
                 </md-content>

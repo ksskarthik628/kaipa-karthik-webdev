@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text no-padding pull-left">
-            <a href="../page/page-list.view.client.html" class="navbar-link">
+            <a ng-click="model.back()" class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left">
                 </span>
             </a>
@@ -12,7 +12,7 @@
             </a>
         </div>
         <p class="navbar-text pull-right">
-            <a href="widget-chooser.view.client.html" class="navbar-link">
+            <a ng-click="model.newWidget()" class="navbar-link">
                 <span class="glyphicon glyphicon-plus">
                 </span>
             </a>
@@ -22,76 +22,34 @@
 
 <div class="container-fluid">
 
-    <div>
+    <div ng-repeat="widget in model.widgets" class="widget-class">
         <div class="widget-edit">
-            <a href="widget-heading.view.client.html">
+            <a ng-click="model.editWidget(widget)">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
             <span class="glyphicon glyphicon-align-justify"></span>
         </div>
-        <div>
-            <h1>GIZMODO</h1>
-        </div>
-    </div>
+        <div ng-switch="widget.widgetType">
+            <div ng-switch-when="HEADER" ng-switch="widget.size">
+                <h1 ng-switch-when="1">{{widget.text}}</h1>
+                <h2 ng-switch-when="2">{{widget.text}}</h2>
+                <h3 ng-switch-when="3">{{widget.text}}</h3>
+                <h4 ng-switch-when="4">{{widget.text}}</h4>
+                <h5 ng-switch-when="5">{{widget.text}}</h5>
+                <h6 ng-switch-when="6">{{widget.text}}</h6>
+            </div>
 
-    <div>
-        <div class="widget-edit">
-            <a href="widget-heading.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-        <div>
-            <h3>Everything You Need to Know About Tomorrow's Rogue One Toyapalooza</h3>
-        </div>
-    </div>
+            <div ng-switch-when="HTML">
+                <div ng-bind-html="model.getSafeHtml(widget)"></div>
+            </div>
 
-    <div>
-        <div class="widget-edit">
-            <a href="widget-image.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-        <div>
-            <img src="https://i.kinja-img.com/gawker-media/image/upload/s--UxEjGdUK--/c_scale,fl_progressive,q_80,w_800/g1izrybyns7v8ibwbxhm.png"
-                 width="100%">
-        </div>
-    </div>
+            <div ng-switch-when="IMAGE">
+                <img width="{{widget.width}}" ng-src="{{widget.url}}">
+            </div>
 
-    <div>
-        <div class="widget-edit">
-            <a href="#">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-        <div>
-            <p>Having the merchandise for a movie we know relatively little about available almost three months before said movie is actually in theaters sounds really weird. But a) this is <a href="http://io9.gizmodo.com/how-star-wars-insane-toy-frenzy-changed-movies-forever-1747164998" rel="nofollow"><em>Star Wars</em>, merchandising behemoth</a>, and b), it’s basically what Disney will do now for every <em>Star Wars</em> movie going forward after the success o<a href="http://gizmodo.com/the-best-star-wars-loot-from-force-friday-1728756436" target="_blank" rel="noopener">f <em>The Force Awakens</em>’ own “Force Friday” last year</a>.</p>
-        </div>
-    </div>
-
-    <div>
-        <div class="widget-edit">
-            <a href="widget-heading.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-        <div>
-            <h3>Dropping an iPhone Off the World's Tallest Building Is as Crazy as It Sounds</h3>
-        </div>
-    </div>
-
-    <div>
-        <div class="widget-edit">
-            <a href="widget-youtube.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-        <div class="youtube-widget">
-            <iframe width="100%" src="https://www.youtube.com/embed/QGGPSV_sUNY" frameborder="0" allowfullscreen></iframe>
+            <div ng-switch-when="YOUTUBE" class="youtube-widget">
+                <iframe width="{{widget.width}}" ng-src="{{model.getSafeUrl(widget)}}" frameborder="0" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
 
@@ -110,7 +68,7 @@
             </a>
         </p>
         <p class="navbar-text pull-right">
-            <a href="../user/profile.view.client.html" class="navbar-link">
+            <a ng-click="model.profile()" class="navbar-link">
                 <span class="glyphicon glyphicon-user">
                 </span>
             </a>

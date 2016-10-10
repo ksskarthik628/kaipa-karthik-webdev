@@ -31,10 +31,10 @@
                 "_id": (new Date()).getTime() + "",
                 "widgetType": widget.widgetType,
                 "pageId": pageId,
-                "size": "",
+                "size": 1,
                 "text": "",
                 "url": "",
-                "width": ""
+                "width": "100%"
             };
             widgets.push(newWidget);
             return newWidget;

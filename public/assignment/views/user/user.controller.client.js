@@ -36,15 +36,19 @@
         vm.clear = clear;
 
         function register(user) {
-            if (user.password === user.verifyPassword) {
-                user = UserService.createUser(user);
-                if (user) {
-                    $location.url("/user/" + user._id);
+            if (user.username) {
+                if (user.password === user.verifyPassword) {
+                    user = UserService.createUser(user);
+                    if (user) {
+                        $location.url("/user/" + user._id);
+                    } else {
+                        vm.alert = "Unable to create user";
+                    }
                 } else {
-                    vm.alert = "Unable to create user";
+                    vm.alert = "Make sure passwords match";
                 }
             } else {
-                vm.alert = "Make sure passwords match";
+                vm.alert = "Please enter valid username";
             }
         }
 

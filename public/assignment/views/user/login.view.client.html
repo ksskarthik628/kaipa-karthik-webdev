@@ -1,4 +1,10 @@
 <div class="container-fluid">
+
+    <div ng-if="model.alert" class="alert alert-danger alert-dismissible" role="alert">
+        <button ng-click="model.clear()" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Failure!</strong> {{model.alert}}
+    </div>
+
     <h1>Login</h1>
     <form>
         <div class="form-group">
@@ -15,10 +21,12 @@
         </div>
     </form>
 
-    <a href="profile.view.client.html" class="btn btn-block btn-primary">
+    <a ng-click="model.login(model.user)"
+       class="btn btn-block btn-primary">
         Login
     </a>
-    <a href="register.view.client.html" class="btn btn-block btn-success">
+    <a ng-click="model.register()"
+       class="btn btn-block btn-success">
         Register
     </a>
 </div>

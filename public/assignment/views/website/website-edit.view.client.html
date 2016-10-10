@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text no-padding pull-left">
-            <a href="website-list.view.client.html" class="navbar-link">
+            <a ng-click="model.back()" class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left">
                 </span>
             </a>
@@ -13,7 +13,7 @@
                 </a>
             </div>
             <p class="navbar-text pull-right">
-                <a href="website-new.view.client.html" class="navbar-link">
+                <a ng-click="model.newWebsite()" class="navbar-link">
                     <span class="glyphicon glyphicon-plus">
                     </span>
                 </a>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="navbar-text pull-right">
-            <a href="website-list.view.client.html" class="navbar-link">
+            <a ng-click="model.updateWebsite(model.website)" class="navbar-link">
                 <span class="glyphicon glyphicon-ok">
                 </span>
             </a>
@@ -38,53 +38,19 @@
 <div class="container-fluid">
     <div class="no-padding no-padding-right sidebar col-sm-4 col-md-3">
         <ul class="list-group">
-            <li class="list-group-item">
-                <a href="../page/page-list.view.client.html">
-                    Address Book App
+
+            <li ng-repeat="website in model.websites" class="list-group-item">
+                <a ng-click="model.openWebsite(website)">
+                    {{website.name}}
                 </a>
                 <p class="pull-right">
-                    <a href="website-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog">
-                        </span>
+                    <a ng-click="model.editWebsite(website)">
+                    <span class="glyphicon glyphicon-cog">
+                    </span>
                     </a>
                 </p>
             </li>
 
-            <li class="list-group-item">
-                <a href="../page/page-list.view.client.html">
-                    Blogger
-                </a>
-                <p class="pull-right">
-                    <a href="website-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog">
-                        </span>
-                    </a>
-                </p>
-            </li>
-
-            <li class="list-group-item">
-                <a href="../page/page-list.view.client.html">
-                    Blogging App
-                </a>
-                <p class="pull-right">
-                    <a href="website-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog">
-                        </span>
-                    </a>
-                </p>
-            </li>
-
-            <li class="list-group-item">
-                <a href="../page/page-list.view.client.html">
-                    Script Testing App
-                </a>
-                <p class="pull-right">
-                    <a href="website-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog">
-                        </span>
-                    </a>
-                </p>
-            </li>
         </ul>
     </div>
     <div class="col-sm-8 col-md-9 inverse-sidebar">
@@ -95,7 +61,8 @@
                        id="name"
                        type="text"
                        class="form-control"
-                       placeholder="Name">
+                       placeholder="Name"
+                       value="{{model.website.name}}">
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
@@ -103,11 +70,10 @@
                           id="description"
                           class="form-control"
                           rows="5"
-                          placeholder="Description">
-                </textarea>
+                          placeholder="Description">{{model.website.description}}</textarea>
             </div>
         </form>
-        <a href="website-list.view.client.html"
+        <a ng-click="model.deleteWebsite()"
            class="btn btn-block btn-danger">
             Delete
         </a>
@@ -117,7 +83,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="../user/profile.view.client.html" class="navbar-link">
+            <a ng-click="model.profile()" class="navbar-link">
                 <span class="glyphicon glyphicon-user">
                 </span>
             </a>

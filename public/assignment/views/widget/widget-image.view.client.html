@@ -25,33 +25,35 @@
         <form>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input id="name"
+                <input ng-model="model.widget.name"
+                       id="name"
                        type="text"
                        class="form-control">
             </div>
             <div class="form-group">
                 <label for="text">Text</label>
-                <input id="text"
+                <input ng-model="model.widget.text"
+                       id="text"
                        type="text"
                        class="form-control">
             </div>
             <div class="form-group">
                 <label for="url">URL</label>
-                <input id="url"
+                <input ng-model="model.widget.url"
+                       id="url"
                        type="url"
-                       class="form-control"
-                       value="https://i.kinja-img.com/gawker-media/image/upload/s--UxEjGdUK--/c_scale,fl_progressive,q_80,w_800/g1izrybyns7v8ibwbxhm.png">
+                       class="form-control">
             </div>
             <div class="form-group">
                 <label for="width">Width</label>
-                <input id="width"
+                <input ng-model="model.widget.width"
+                       id="width"
                        type="text"
-                       class="form-control"
-                       value="100%">
+                       class="form-control">
             </div>
             <div class="form-group">
                 <label for="upload">Upload</label>
-                <input id="upload"
+                <input ng-model="model.widget.upload" id="upload"
                        type="file"
                        class="form-control">
             </div>

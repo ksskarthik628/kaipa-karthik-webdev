@@ -2,12 +2,14 @@
     <h1>Login</h1>
     <form>
         <div class="form-group">
-            <input class="form-control"
+            <input ng-model="model.user.username"
+                   class="form-control"
                    type="text"
                    placeholder="username">
         </div>
         <div class="form-group">
-            <input class="form-control"
+            <input ng-model="model.user.password"
+                   class="form-control"
                    type="password"
                    placeholder="password"/>
         </div>

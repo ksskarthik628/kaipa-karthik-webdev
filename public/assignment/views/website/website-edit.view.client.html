@@ -91,18 +91,19 @@
         <form>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input id="name"
+                <input ng-model="model.website.name"
+                       id="name"
                        type="text"
                        class="form-control"
-                       placeholder="Name"
-                       value="Lorem Ipsum">
+                       placeholder="Name">
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea id="description"
+                <textarea ng-model="model.website.description"
+                          id="description"
                           class="form-control"
                           rows="5"
-                          placeholder="Description">Lorem ipsum dolor sit amet, id ligula, lectus habitasse, sit non, in eleifend molestie in ultrices sit condimentum. Nunc sed in risus sed commodo vestibulum, elit eget enim in vestibulum ligula integer. Eget at magnis purus. Amet in at litora nec dis. In arcu egestas feugiat, suspendisse praesent dui fusce, placerat id aliquet at nulla lectus. Velit sapien nam tortor non auctor neque, nibh nam velit sit nec.
+                          placeholder="Description">
                 </textarea>
             </div>
         </form>

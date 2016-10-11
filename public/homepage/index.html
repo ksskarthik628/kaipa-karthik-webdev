@@ -26,6 +26,7 @@
     <script src="controllers/about.controller.client.js"></script>
     <script src="controllers/contact.controller.client.js"></script>
     <script src="controllers/landing.controller.client.js"></script>
+    <script src="controllers/skills.controller.client.js"></script>
     <script src="js/typed.js"></script>
     <script src="js/script.js"></script>
 </head>
@@ -72,9 +73,45 @@
                 <md-content class="transparent" flex layout="row" layout-align="center" layout-padding layout-margin>
                     <md-content class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
                         <div layout="column" layout-align="center center" layout-fill>
-                            <p>About</p>
-                            <button ng-click="model.route('landing')">Landing</button> <br />
-                            <button ng-click="model.route('contact')">Contact</button>
+                            <div class="nav-back">
+                                <md-button class="md-icon-button" ng-click="model.route('landing')" aria-label="Back">
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                </md-button>
+                            </div>
+                            <div class="content" flex>
+                                <img src="images/karthik.jpg"/>
+                                <h3>Who is Karthik?</h3>
+                                <p>
+                                    Karthik belongs to a very specific group of people who are uniquely artistic and extremely
+                                    analytical at the same time. You could say that the left and right halves of his brain
+                                    are in perfect harmony. This unique combination of order and chaos has enabled him to
+                                    become a master at problem identification and pattern matching.
+                                </p>
+                                <p>
+                                    His academic background includes a Bachelors degree in Computer Science from the prestigious
+                                    IIT Bombay in India, admission into which is not a simple matter. He gained entrance to this
+                                    world renowned institute after securing an All India Rank of 83 in one of the most difficult
+                                    technical exams in the world, IITJEE, in the year 2010 which was given by approximately
+                                    half a million aspiring students.
+                                </p>
+                                <p>
+                                    After graduating from IIT Bombay in 2014, he went on to join Northeastern University, located in
+                                    Boston, for his Masters degree in Computer Science. Though he chose to do a specialization
+                                    in Game Development, his technical background and well as his Co-op experience at PayPal
+                                    make him ready for any role in the spectrum of Software Development stack.
+                                </p>
+                                <p>
+                                    He has experience in Front-End development using such technologies as AngularJS, Bootstrap and Angular Material
+                                    for styling and jQuery, VelocityJS and JavaScript for animations. He also has experience in
+                                    Back-End development using such technologies as NodeJS and ExpressJS for server side programming
+                                    and MongoDB using MongooseJS for database access and usage.
+                                </p>
+                                <p>
+                                    He is quite proficient in various programming languages, Jave being his go-to language of choice.
+                                    He is recently discovering the pleasure of using JavaScript while learning the intricacies
+                                    of the MEAN stack. He wishes to, at least in the near future, be proficient in JavaScript as well.
+                                </p>
+                            </div>
                         </div>
                     </md-content>
                 </md-content>
@@ -86,6 +123,11 @@
                 <md-content class="transparent" flex layout="row" layout-align="center" layout-padding layout-margin>
                     <md-content class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
                         <div layout="column" layout-align="center center" layout-fill>
+                            <div class="nav-back">
+                                <md-button class="md-icon-button" ng-click="model.route('landing')" aria-label="Back">
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                </md-button>
+                            </div>
                             <p>Contact</p>
                             <button ng-click="model.route('landing')">Landing</button> <br />
                             <button ng-click="model.route('about')">About</button>
@@ -100,6 +142,11 @@
                 <md-content class="transparent" flex layout="row" layout-align="center" layout-padding layout-margin>
                     <md-content class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
                         <div layout="column" layout-align="center center" layout-fill>
+                            <div class="nav-back">
+                                <md-button class="md-icon-button" ng-click="model.route('landing')" aria-label="Back">
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                </md-button>
+                            </div>
                             <p>Skills</p>
                             <button ng-click="model.route('landing')">Landing</button> <br />
                             <button ng-click="model.route('contact')">Contact</button>

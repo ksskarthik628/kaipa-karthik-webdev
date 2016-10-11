@@ -62,7 +62,7 @@
                     vm.skills
                         .velocity({translateX: vm.width}, {
                             duration: vm.time, easing: "easeInOut", complete: function () {
-                                vm.contact.css('z-index', vm.skillsIndexEnd);
+                                vm.skills.css('z-index', vm.skillsIndexEnd);
                             }
                         })
                         .velocity("reverse", {

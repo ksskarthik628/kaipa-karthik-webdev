@@ -1,17 +1,17 @@
 (function () {
     angular
         .module('Homepage')
-        .controller('AboutController', AboutController);
+        .controller('SkillsController', SkillsController);
 
-    function AboutController($state, $location, $window) {
+    function SkillsController($state, $location, $window) {
         var vm = this;
         vm.landingIndex = 4;
-        vm.aboutIndexStart = 5;
+        vm.aboutIndexStart = 3;
         vm.contactIndexStart = 2;
-        vm.skillsIndexStart = 1;
-        vm.aboutIndexEnd = 3;
+        vm.skillsIndexStart = 5;
+        vm.aboutIndexEnd = 5;
         vm.contactIndexEnd = 5;
-        vm.skillsIndexEnd = 5;
+        vm.skillsIndexEnd = 1;
         vm.landing = $('#landing');
         vm.about = $('#about');
         vm.contact = $('#contact');
@@ -33,10 +33,10 @@
 
             switch(toState) {
                 case 'landing':
-                    vm.about
+                    vm.skills
                         .velocity({translateX: vm.width}, {
                             duration: vm.time, easing: "easeInOut", complete: function () {
-                                vm.about.css('z-index', vm.aboutIndexEnd);
+                                vm.skills.css('z-index', vm.skillsIndexEnd);
                             }
                         })
                         .velocity("reverse", {
@@ -46,10 +46,10 @@
                         });
                     break;
                 case 'contact':
-                    vm.about
+                    vm.skills
                         .velocity({translateX: vm.width}, {
                             duration: vm.time, easing: "easeInOut", complete: function () {
-                                vm.about.css('z-index', vm.aboutIndexEnd);
+                                vm.skills.css('z-index', vm.skillsIndexEnd);
                             }
                         })
                         .velocity("reverse", {
@@ -68,19 +68,19 @@
                             }
                         });
                     break;
-                case 'skills':
-                    vm.about
+                case 'about':
+                    vm.skills
                         .velocity({translateX: vm.width}, {
                             duration: vm.time, easing: "easeInOut", complete: function () {
-                                vm.about.css('z-index', vm.aboutIndexEnd);
+                                vm.skills.css('z-index', vm.skillsIndexEnd);
                             }
                         })
                         .velocity("reverse", {
                             duration: vm.time, easing: "easeInOut", complete: function () {
-                                vm.skills
+                                vm.about
                                     .velocity({translateX: vm.width}, {
                                         duration: vm.time, easing: "easeInOut", complete: function () {
-                                            vm.skills.css('z-index', vm.skillsIndexEnd);
+                                            vm.about.css('z-index', vm.aboutIndexEnd);
                                         }
                                     })
                                     .velocity("reverse", {

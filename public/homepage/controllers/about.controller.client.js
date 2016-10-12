@@ -26,6 +26,13 @@
             vm.about.css('z-index', vm.aboutIndexStart);
             vm.contact.css('z-index', vm.contactIndexStart);
             vm.skills.css('z-index', vm.skillsIndexStart);
+            $(function () {
+                var abm = $("#about-me");
+                var navback = $("#about-me-nav");
+                abm.scroll(function () {
+                    navback.css('top', abm.scrollTop());
+                });
+            });
         }
         init();
 

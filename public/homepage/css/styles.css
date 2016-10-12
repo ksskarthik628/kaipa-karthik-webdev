@@ -22,10 +22,17 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    padding-top: 5px;
+}
+
+.md-icon-button {
+    margin-left: 0 !important;
 }
 
 .content {
-    padding: 52px 25px 25px 25px;
+    padding: 30px 30px 30px 30px;
     text-align: center;
+}
+
+#about-me {
+    overflow-y: scroll;
 }

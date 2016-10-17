@@ -168,16 +168,26 @@
         <div id="skills" class="top transparent" layout="column" layout-fill>
             <md-content class="transparent" flex layout="column">
                 <md-content class="transparent" flex layout="row" layout-align="center" layout-padding layout-margin>
-                    <md-content class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
+                    <md-content id="skills-me" class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
                         <div layout="column" layout-align="center center" layout-fill>
-                            <div class="nav-back">
+                            <div id="skills-me-nav" class="nav-back">
                                 <md-button class="md-icon-button" ng-click="model.route('landing')" aria-label="Back">
                                     <i class="fa fa-arrow-left" aria-hidden="true"></i>
                                 </md-button>
                             </div>
-                            <p>Skills</p>
-                            <button ng-click="model.route('landing')">Landing</button> <br />
-                            <button ng-click="model.route('contact')">Contact</button>
+                            <div id="skills-content" class="content">
+                                <h3>What does Karthik know?</h3>
+                                <p>
+                                    Karthik is known to know a lot of things. You can get a clearer view by looking
+                                    <span ng-click="model.route('resume')"><i class="fa fa-download" aria-hidden="true"></i>here</span>
+                                </p>
+                                <p>
+                                    Here is a gist of technologies he knows:</p>
+
+                                <!--<md-grid-list md-cols-sm="2" md-cols-md="3" md-cols-gt="6">-->
+
+                                <!--</md-grid-list>-->
+                            </div>
                         </div>
                     </md-content>
                 </md-content>

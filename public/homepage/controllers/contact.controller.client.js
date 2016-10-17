@@ -26,6 +26,13 @@
             vm.about.css('z-index', vm.aboutIndexStart);
             vm.contact.css('z-index', vm.contactIndexStart);
             vm.skills.css('z-index', vm.skillsIndexStart);
+            $(function () {
+                var abm = $("#contact-me");
+                var navback = $("#contact-me-nav");
+                abm.scroll(function () {
+                    navback.css('top', abm.scrollTop());
+                });
+            });
         }
         init();
 
@@ -92,13 +99,31 @@
                         });
                     break;
                 case 'github':
-                    $window.location.href = "https://github.com/ksskarthik628";
+                    $window.location.href = "http://github.com/ksskarthik628";
                     break;
                 case 'wam':
                     $window.location.href = vm.address[0] + "//" + vm.address[2] + "/" + "assignment";
                     break;
                 case 'wc':
                     $window.location.href = vm.address[0] + "//" + vm.address[2] + "/" + "project";
+                    break;
+                case 'facebook':
+                    $window.location.href = "http://facebook.com/ksskarthik";
+                    break;
+                case 'gmail':
+                    $window.location.href = "mailto:ksskarthik628@gmail.com";
+                    break;
+                case 'instagram':
+                    $window.location.href = "http://instagram.com/ksskarthik628";
+                    break;
+                case 'linkedin':
+                    $window.location.href = "http://linkedin.com/in/kssk628";
+                    break;
+                case 'skype':
+                    $window.location.href = "skype:ksskarthik628";
+                    break;
+                case 'steam':
+                    $window.location.href = "https://steamcommunity.com/id/kssk628/";
                     break;
             }
         }

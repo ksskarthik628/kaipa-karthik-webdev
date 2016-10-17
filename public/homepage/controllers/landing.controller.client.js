@@ -26,6 +26,15 @@
             vm.about.css('z-index', vm.aboutIndexStart);
             vm.contact.css('z-index', vm.contactIndexStart);
             vm.skills.css('z-index', vm.skillsIndexStart);
+            $(function(){
+                $("#heading").typed({
+                    stringsElement: $('#heading-text'),
+                    typeSpeed: 100,
+                    loop: false,
+                    contentType: 'text',
+                    loopCount: false
+                });
+            });
         }
         init();
 

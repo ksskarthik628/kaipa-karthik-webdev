@@ -36,3 +36,12 @@ body {
 #about-me {
     overflow-y: scroll;
 }
+
+#my-pic {
+    max-width: 100%;
+}
+
+#contact-content {
+    padding-bottom: 0;
+    padding-top: 10px;
+}

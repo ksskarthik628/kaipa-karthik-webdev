@@ -40,28 +40,26 @@
                         <div layout="column" layout-align="center center" layout-fill>
                             <div id="heading-text"><h3>REPORT : KARTHIK</h3></div>
                             <h3 id="heading"></h3>
-                            <md-content>
-                                <md-list flex>
-                                    <md-list-item class="md-1-line" ng-click="model.route('about')">
-                                        1. Who is he?
-                                    </md-list-item>
-                                    <md-list-item class="md-1-line" ng-click="model.route('contact')">
-                                        2. Where is he?
-                                    </md-list-item>
-                                    <md-list-item class="md-1-line" ng-click="model.route('skills')">
-                                        3. What does he know?
-                                    </md-list-item>
-                                    <md-list-item class="md-1-line" ng-click="model.route('github')">
-                                        4. What has he done?
-                                    </md-list-item>
-                                    <md-list-item class="md-1-line" ng-click="model.route('wam')">
-                                        5. Web App Maker
-                                    </md-list-item>
-                                    <md-list-item class="md-1-line" ng-click="model.route('wc')">
-                                        6. Writers' Corner
-                                    </md-list-item>
-                                </md-list>
-                            </md-content>
+                            <md-list flex>
+                                <md-list-item class="md-1-line" ng-click="model.route('about')">
+                                    1. Who is he?
+                                </md-list-item>
+                                <md-list-item class="md-1-line" ng-click="model.route('contact')">
+                                    2. Where is he?
+                                </md-list-item>
+                                <md-list-item class="md-1-line" ng-click="model.route('skills')">
+                                    3. What does he know?
+                                </md-list-item>
+                                <md-list-item class="md-1-line" ng-click="model.route('github')">
+                                    4. What has he done?
+                                </md-list-item>
+                                <md-list-item class="md-1-line" ng-click="model.route('wam')">
+                                    5. Web App Maker
+                                </md-list-item>
+                                <md-list-item class="md-1-line" ng-click="model.route('wc')">
+                                    6. Writers' Corner
+                                </md-list-item>
+                            </md-list>
                         </div>
                     </md-content>
                 </md-content>
@@ -79,7 +77,7 @@
                                 </md-button>
                             </div>
                             <div class="content" flex>
-                                <img src="images/karthik.jpg"/>
+                                <img id="my-pic" src="images/karthik.jpg"/>
                                 <h3>Who is Karthik?</h3>
                                 <p>
                                     Karthik belongs to a very specific group of people who are uniquely artistic and extremely
@@ -121,16 +119,46 @@
         <div id="contact" class="top transparent" layout="column" layout-fill>
             <md-content class="transparent" flex layout="column">
                 <md-content class="transparent" flex layout="row" layout-align="center" layout-padding layout-margin>
-                    <md-content class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
+                    <md-content id="contact-me" class="md-whiteframe-z2" flex-xs="90" flex-sm="85" flex-md="80" flex-lg="70" flex-xl="60">
                         <div layout="column" layout-align="center center" layout-fill>
-                            <div class="nav-back">
+                            <div id="contact-me-nav" class="nav-back">
                                 <md-button class="md-icon-button" ng-click="model.route('landing')" aria-label="Back">
                                     <i class="fa fa-arrow-left" aria-hidden="true"></i>
                                 </md-button>
                             </div>
-                            <p>Contact</p>
-                            <button ng-click="model.route('landing')">Landing</button> <br />
-                            <button ng-click="model.route('about')">About</button>
+                            <div id="contact-content" class="content">
+                                <h3>Where is Karthik?</h3>
+                                <p>
+                                    Karthik is mostly seen sitting at his home, seemingly busy with some work on his laptop
+                                    (although no one knows what he keeps doing all the time). At times, he can also be seen
+                                    around campus, at the library or sitting in a corner at the CCIS lab.
+                                </p>
+                                <p>
+                                    Apart from that, he is occasionally seen on these social media sites:</p>
+                            </div>
+                            <md-list flex>
+                                <md-list-item class="md-1-line" ng-click="model.route('facebook')">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>/ksskarthik
+                                </md-list-item>
+                                <md-list-item class="md-1-line" ng-click="model.route('instagram')">
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>/ksskarthik628
+                                </md-list-item>
+                                <md-list-item class="md-1-line" ng-click="model.route('github')">
+                                    <i class="fa fa-github" aria-hidden="true"></i>/ksskarthik628
+                                </md-list-item>
+                                <md-list-item class="md-1-line" ng-click="model.route('gmail')">
+                                    <i class="fa fa-google" aria-hidden="true"></i>/ksskarthik628
+                                </md-list-item>
+                                <md-list-item class="md-1-line" ng-click="model.route('linkedin')">
+                                    <i class="fa fa-linkedin" aria-hidden="true"></i>/kssk628
+                                </md-list-item>
+                                <md-list-item class="md-1-line" ng-click="model.route('skype')">
+                                    <i class="fa fa-skype" aria-hidden="true"></i>/ksskarthik628
+                                </md-list-item>
+                                <md-list-item class="md-1-line" ng-click="model.route('steam')">
+                                    <i class="fa fa-steam" aria-hidden="true"></i>/kssk628
+                                </md-list-item>
+                            </md-list>
                         </div>
                     </md-content>
                 </md-content>

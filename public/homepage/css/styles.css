@@ -37,6 +37,14 @@ body {
     overflow-y: scroll;
 }
 
+#contact-me {
+    overflow-y: scroll;
+}
+
+#skills-me {
+    overflow-y: scroll;
+}
+
 #my-pic {
     max-width: 100%;
 }
@@ -44,4 +52,11 @@ body {
 #contact-content {
     padding-bottom: 0;
     padding-top: 10px;
+    max-height: 100%;
+}
+
+#skills-content {
+    padding-bottom: 0;
+    padding-top: 10px;
+    max-height: 100%;
 }

@@ -26,6 +26,13 @@
             vm.about.css('z-index', vm.aboutIndexStart);
             vm.contact.css('z-index', vm.contactIndexStart);
             vm.skills.css('z-index', vm.skillsIndexStart);
+            $(function () {
+                var abm = $("#skills-me");
+                var navback = $("#skills-me-nav");
+                abm.scroll(function () {
+                    navback.css('top', abm.scrollTop());
+                });
+            });
         }
         init();
 
@@ -99,6 +106,9 @@
                     break;
                 case 'wc':
                     $window.location.href = vm.address[0] + "//" + vm.address[2] + "/" + "project";
+                    break;
+                case 'resume':
+                    $window.open(vm.address[0] + "//" + vm.address[2] + "/" + "homepage/resume/Sriharsha_Srinivasa_Karthik_Kaipa.pdf");
                     break;
             }
         }

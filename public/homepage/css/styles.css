@@ -4,6 +4,14 @@ body {
     font-family: 'Roboto Mono', monospace;
 }
 
+#heading {
+    display: none;
+}
+
+#heading-text {
+    display: block;
+}
+
 .top {
     position: absolute;
     top: 0;

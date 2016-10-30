@@ -12,12 +12,14 @@
         vm.clear = clear;
 
         function login(user) {
-            user = UserService.findUserByCredentials(user.username, user.password);
-            if (user) {
-                $location.url("/user/" + user._id);
-            } else {
-                vm.alert = "Unable to find user";
-            }
+            UserService
+                .findUserByCredentials(user.username, user.password)
+                .then(function (response) {
+                    var user = response.data;
+                    $location.url("/user/" + user._id);
+                }, function (error) {
+                    vm.alert = "Unable to find user";
+                });
         }
 
         function register() {
@@ -38,12 +40,14 @@
         function register(user) {
             if (user.username) {
                 if (user.password === user.verifyPassword) {
-                    user = UserService.createUser(user);
-                    if (user) {
-                        $location.url("/user/" + user._id);
-                    } else {
-                        vm.alert = "Unable to create user";
-                    }
+                    UserService
+                        .createUser(user)
+                        .then(function (response) {
+                            var user = response.data;
+                            $location.url("/user/" + user._id);
+                        }, function (error) {
+                            vm.alert = "Unable to create user";
+                        });
                 } else {
                     vm.alert = "Make sure passwords match";
                 }
@@ -67,20 +71,28 @@
         vm.updateUser = updateUser;
         vm.website = website;
         vm.logout = logout;
+        vm.deleteAccount = deleteAccount;
         vm.clear = clear;
 
         function init() {
-            vm.user = UserService.findUserById(vm.userId);
+            UserService
+                .findUserById(vm.userId)
+                .then(function (response) {
+                    vm.user = response.data;
+                }, function (error) {
+                    vm.alert = "Unable to find user";
+                });
         }
         init();
 
         function updateUser(user) {
-            user = UserService.updateUser(vm.userId, user);
-            if (user) {
-                vm.success = "User updated";
-            } else {
-                vm.alert = "Unable to update user";
-            }
+            UserService
+                .updateUser(vm.userId, user)
+                .then(function (response) {
+                    vm.success = "User updated";
+                }, function (error) {
+                    vm.alert = "Unable to update user";
+                });
         }
         
         function website() {
@@ -89,6 +101,16 @@
 
         function logout() {
             $location.url("/login");
+        }
+
+        function deleteAccount() {
+            UserService
+                .deleteUser(vm.userId)
+                .then(function (response) {
+                    $location.url("/login");
+                }, function (error) {
+                    vm.alert = "Unable to delete account";
+                });
         }
 
         function clear() {

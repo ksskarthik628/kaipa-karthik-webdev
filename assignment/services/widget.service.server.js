@@ -1,19 +1,20 @@
 module.exports = function (app) {
 
     var widgets = [
-        { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
-        { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
+        { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO", "index": 0},
+        { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum", "index": 1},
         { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
-            "url": "http://lorempixel.com/400/200/"},
-        { "_id": "456", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
-        { "_id": "567", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
+            "url": "http://lorempixel.com/400/200/", "index": 2},
+        { "_id": "456", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>", "index": 3},
+        { "_id": "567", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum", "index": 4},
         { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
-            "url": "https://youtu.be/AM2Ivdi9c4E" },
-        { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
+            "url": "https://youtu.be/AM2Ivdi9c4E", "index": 5},
+        { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>", "index": 6}
     ];
 
     app.post("/api/page/:pid/widget", createWidget);
     app.get("/api/page/:pid/widget", findAllWidgetsForPage);
+    app.put("/api/page/:pid/widget", reorderWidgetsForPage);
     app.get("/api/widget/:wgid", findWidgetById);
     app.put("/api/widget/:wgid", updateWidget);
     app.delete("/api/widget/:wgid", deleteWidget);
@@ -28,7 +29,8 @@ module.exports = function (app) {
             "size": 1,
             "text": "",
             "url": "",
-            "width": "100%"
+            "width": "100%",
+            "index": widgets.length
         };
         widgets.push(newWidget);
         if (newWidget) {
@@ -51,6 +53,31 @@ module.exports = function (app) {
             return;
         }
         res.sendStatus(404);
+    }
+
+    function reorderWidgetsForPage(req, res) {
+        var pageId = req.params['pid'];
+        var start = parseInt(req.query['start']);
+        var end = parseInt(req.query['end']);
+
+        widgets.forEach(function (widget) {
+            if (widget.pageId === pageId) {
+                if (start > end){
+                    if (widget.index >= end && widget.index < start) {
+                        widget.index++;
+                    } else if (widget.index === start) {
+                        widget.index = end;
+                    }
+                } else {
+                    if (widget.index === start) {
+                        widget.index = end;
+                    } else if (widget.index > start && widget.index <= end) {
+                        widget.index--;
+                    }
+                }
+            }
+        });
+        res.sendStatus(200);
     }
 
     function findWidgetById(req, res) {

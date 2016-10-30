@@ -13,6 +13,7 @@
         vm.back = back;
         vm.newWidget = newWidget;
         vm.editWidget = editWidget;
+        vm.reorderWidget = reorderWidget;
         vm.getSafeHtml = getSafeHtml;
         vm.getSafeUrl = getSafeUrl;
         vm.profile = profile;
@@ -39,6 +40,14 @@
 
         function editWidget(widget) {
             $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widget._id);
+        }
+        
+        function reorderWidget(start, end) {
+            WidgetService
+                .reorderWidget(vm.pageId, start, end)
+                .then(init, function (error) {
+                    vm.alert = "Unable to reorder widgets";
+                })
         }
 
         function getSafeHtml(widget) {

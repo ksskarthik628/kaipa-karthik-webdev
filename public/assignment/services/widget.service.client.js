@@ -11,6 +11,7 @@
         var api = {
             createWidget: createWidget,
             findWidgetsByPageId: findWidgetsByPageId,
+            reorderWidget: reorderWidget,
             findWidgetById: findWidgetById,
             updateWidget: updateWidget,
             deleteWidget: deleteWidget
@@ -23,6 +24,10 @@
 
         function findWidgetsByPageId(pageId) {
             return $http.get(urlPage + pageId + "/widget");
+        }
+        
+        function reorderWidget(pageId, start, end) {
+            return $http.put(urlPage + pageId + "/widget?start=" + start + "&end=" + end);
         }
 
         function findWidgetById(widgetId) {

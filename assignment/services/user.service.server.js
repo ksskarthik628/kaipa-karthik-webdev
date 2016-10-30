@@ -23,7 +23,11 @@ module.exports = function (app) {
             lastName: user.lastName
         };
         users.push(newUser);
-        res.json(newUser);
+        if (newUser) {
+            res.json(newUser);
+            return;
+        }
+        res.sendStatus(400);
     }
 
     function findUser(req, res) {

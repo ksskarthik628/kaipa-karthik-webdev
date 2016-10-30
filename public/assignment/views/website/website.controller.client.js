@@ -86,7 +86,6 @@
                 WebsiteService
                     .createWebsite(vm.userId, website)
                     .then(function (response) {
-                        var website = response.data;
                         vm.success = "Website created";
                         $location.url("/user/" + vm.userId + "/website");
                     }, function (error) {
@@ -158,7 +157,6 @@
             WebsiteService
                 .updateWebsite(vm.websiteId, website)
                 .then(function (response) {
-                    website = response.data;
                     vm.success = "Website Updated";
                     $location.url("/user/" + vm.userId + "/website");
                 }, function (error) {

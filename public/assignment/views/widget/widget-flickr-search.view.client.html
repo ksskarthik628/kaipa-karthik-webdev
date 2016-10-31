@@ -1,0 +1,51 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text no-padding pull-left">
+            <a ng-click="model.back()" class="navbar-link">
+                <span class="glyphicon glyphicon-chevron-left">
+                </span>
+            </a>
+        </div>
+        <div class="navbar-header pull-left">
+            <a class="navbar-brand navbrand">
+                Search Flickr
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div ng-if="model.alert" class="alert alert-danger alert-dismissible" role="alert">
+        <button ng-click="model.clear()" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Failure!</strong> {{model.alert}}
+    </div>
+
+    <div class="input-group">
+        <input ng-model="searchText" type="text" class="form-control"/>
+        <span class="input-group-btn">
+            <a ng-click="model.searchFlickr(searchText)" class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </span>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4" ng-repeat="photo in model.photos.photo">
+            <img ng-click="model.selectPhoto(photo)"
+                 ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
+        </div>
+    </div>
+
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a ng-click="model.profile()" class="navbar-link">
+                <span class="glyphicon glyphicon-user">
+                </span>
+            </a>
+        </p>
+    </div>
+</nav>

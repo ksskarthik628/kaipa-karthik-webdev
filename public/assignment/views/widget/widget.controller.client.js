@@ -118,6 +118,7 @@
         vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
         vm.url = url;
+        vm.searchFlickr = searchFlickr;
         vm.profile = profile;
         vm.clear = clear;
 
@@ -157,6 +158,10 @@
 
         function url() {
             return "/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + vm.widgetId;
+        }
+
+        function searchFlickr() {
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + vm.widgetId + "/search");
         }
 
         function back() {

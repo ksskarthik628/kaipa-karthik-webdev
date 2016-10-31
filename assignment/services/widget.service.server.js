@@ -100,10 +100,14 @@ module.exports = function (app) {
         var widget = req.body;
         for (var i in widgets) {
             if (widgets[i]._id === widgetId) {
-                widgets[i].size = widget.size;
-                widgets[i].text = widget.text;
-                widgets[i].url = widget.url;
-                widgets[i].width = widget.width;
+                if (widget.size)
+                    widgets[i].size = widget.size;
+                if (widget.text)
+                    widgets[i].text = widget.text;
+                if (widget.url)
+                    widgets[i].url = widget.url;
+                if (widget.width)
+                    widgets[i].width = widget.width;
                 res.sendStatus(200);
                 return;
             }

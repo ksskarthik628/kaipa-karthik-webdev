@@ -117,6 +117,7 @@
         vm.back = back;
         vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
+        vm.url = url;
         vm.profile = profile;
         vm.clear = clear;
 
@@ -152,6 +153,10 @@
                 }, function (error) {
                     vm.alert = "Unable to delete widget";
                 });
+        }
+
+        function url() {
+            return "/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + vm.widgetId;
         }
 
         function back() {

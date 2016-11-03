@@ -119,6 +119,7 @@ module.exports = function (app) {
         var widgetId = req.params['wgid'];
         for (var i in widgets) {
             if (widgets[i]._id === widgetId) {
+                reorderWidgetsAfterDelete(widgets[i].pageId, widgets[i].index);
                 widgets.splice(i, 1);
                 res.sendStatus(200);
                 return;
@@ -148,6 +149,16 @@ module.exports = function (app) {
         }
 
         res.redirect("/assignment/#" + returnUrl);
+    }
+
+    function reorderWidgetsAfterDelete(pageId, index) {
+        widgets.forEach(function (widget) {
+            if (widget.pageId === pageId) {
+                if (widget.index > index) {
+                    widget.index--;
+                }
+            }
+        })
     }
 
 };

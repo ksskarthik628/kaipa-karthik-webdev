@@ -45,7 +45,9 @@
         function reorderWidget(start, end) {
             WidgetService
                 .reorderWidget(vm.pageId, start, end)
-                .then(init, function (error) {
+                .then(function (response) {
+                    vm.success = "Widgets reordered";
+                }, function (error) {
                     vm.alert = "Unable to reorder widgets";
                 })
         }
@@ -67,6 +69,7 @@
 
         function clear() {
             vm.alert = "";
+            vm.success = "";
         }
     }
 

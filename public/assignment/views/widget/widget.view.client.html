@@ -5,6 +5,11 @@
         <strong>Failure!</strong> {{model.alert}}
     </div>
 
+    <div ng-if="model.success" class="alert alert-success alert-dismissible" role="alert">
+        <button ng-click="model.clear()" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Success!</strong> {{model.success}}
+    </div>
+
     <div ng-repeat="widget in model.widgets | orderBy: 'index'">
         <div class="widget-edit">
             <a ng-click="model.editWidget(widget)">

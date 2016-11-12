@@ -16,7 +16,10 @@
                 .findUserByCredentials(user.username, user.password)
                 .then(function (response) {
                     var user = response.data;
-                    $location.url("/user/" + user._id);
+                    if (user)
+                        $location.url("/user/" + user._id);
+                    else
+                        vm.alert = "Unable to find user";
                 }, function (error) {
                     vm.alert = "Unable to find user";
                 });

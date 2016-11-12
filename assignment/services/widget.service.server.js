@@ -16,7 +16,6 @@ module.exports = function (app, models) {
     function createWidget(req, res) {
         var pageId = req.params['pid'];
         var widget = req.body;
-        widget.width = "100%";
         widgetModel
             .createWidget(pageId, widget)
             .then(function (widget) {

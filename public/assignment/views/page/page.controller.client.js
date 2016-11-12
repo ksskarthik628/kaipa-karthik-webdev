@@ -85,14 +85,18 @@
 
         function createPage(page) {
             if (page) {
-                PageService
-                    .createPage(vm.websiteId, page)
-                    .then(function (response) {
-                        vm.success = "Page created";
-                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
-                    }, function (error) {
-                        vm.alert = "Unable to create page";
-                    });
+                if (page.title) {
+                    PageService
+                        .createPage(vm.websiteId, page)
+                        .then(function (response) {
+                            vm.success = "Page created";
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                        }, function (error) {
+                            vm.alert = "Unable to create page";
+                        });
+                } else {
+                    vm.alert = "Please give a title";
+                }
             } else {
                 vm.alert = "Please fill fields to create page";
             }

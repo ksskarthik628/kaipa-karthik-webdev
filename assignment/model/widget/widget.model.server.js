@@ -17,11 +17,13 @@ module.exports = function () {
 
     function createWidget(pageId, widget) {
         widget._page = pageId;
+        widget.size = 1;
+        widget.width = "100%";
         return Widget
-            .find({_page: pageId},
-                function (err, widgets) {
-                    widget.index = widgets.length;
-                    Widget.create(widget);
+            .find({_page: pageId})
+            .then(function (widgets) {
+                widget.index = widgets.length;
+                return Widget.create(widget);
             });
     }
 

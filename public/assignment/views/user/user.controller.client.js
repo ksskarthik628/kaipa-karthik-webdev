@@ -49,7 +49,10 @@
                             var user = response.data;
                             $location.url("/user/" + user._id);
                         }, function (error) {
-                            vm.alert = "Unable to create user";
+                            if (error.status === 409)
+                                vm.alert = "Username taken";
+                            else
+                                vm.alert = "Unable to create user";
                         });
                 } else {
                     vm.alert = "Make sure passwords match";

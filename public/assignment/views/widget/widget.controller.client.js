@@ -64,7 +64,7 @@
         }
 
         function profile() {
-            $location.url("/user/" + vm.userId);
+            $location.url("/user");
         }
 
         function clear() {
@@ -102,7 +102,7 @@
         }
 
         function profile() {
-            $location.url("/user/" + vm.userId);
+            $location.url("/user");
         }
 
         function clear() {
@@ -137,15 +137,23 @@
         init();
 
         function updateWidget(widget) {
+            if (widget) {
+                if (widget.name) {
+                    WidgetService
+                        .updateWidget(vm.widgetId, widget)
+                        .then(function (response) {
+                            vm.success = "Widget updated";
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                        }, function (error) {
+                            vm.alert = "Unable to update Widget";
+                        });
+                } else {
+                    vm.alert = "Please provide name to your widget";
+                }
+            } else {
+                vm.alert = "Unable to update widget";
+            }
 
-            WidgetService
-                .updateWidget(vm.widgetId, widget)
-                .then(function (response) {
-                    vm.success = "Widget updated";
-                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-                }, function (error) {
-                    vm.alert = "Unable to update Widget";
-                });
         }
 
         function deleteWidget() {
@@ -172,7 +180,7 @@
         }
 
         function profile() {
-            $location.url("/user/" + vm.userId);
+            $location.url("/user");
         }
 
         function clear() {

@@ -44,7 +44,7 @@
         }
 
         function profile() {
-            $location.url("/user/" + vm.userId);
+            $location.url("/user");
         }
 
         function clear() {
@@ -95,7 +95,7 @@
                             vm.alert = "Unable to create page";
                         });
                 } else {
-                    vm.alert = "Please give a title";
+                    vm.alert = "Please provide a title";
                 }
             } else {
                 vm.alert = "Please fill fields to create page";
@@ -111,7 +111,7 @@
         }
 
         function profile() {
-            $location.url("/user/" + vm.userId);
+            $location.url("/user");
         }
 
         function clear() {
@@ -161,14 +161,23 @@
         }
 
         function updatePage(page) {
-            PageService
-                .updatePage(vm.pageId, page)
-                .then(function (response) {
-                    vm.success = "Page updated";
-                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
-                }, function (error) {
-                    vm.alert = "Unable to update page";
-                });
+            if (page) {
+                if (page.title) {
+                    PageService
+                        .updatePage(vm.pageId, page)
+                        .then(function (response) {
+                            vm.success = "Page updated";
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                        }, function (error) {
+                            vm.alert = "Unable to update page";
+                        });
+                } else {
+                    vm.alert = "Please provide a title";
+                }
+            } else {
+                vm.alert = "Please enter details to update page";
+            }
+
         }
 
         function deletePage() {
@@ -191,7 +200,7 @@
         }
 
         function profile() {
-            $location.url("/user/" + vm.userId);
+            $location.url("/user");
         }
 
         function clear() {

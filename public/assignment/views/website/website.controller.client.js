@@ -43,7 +43,7 @@
         }
 
         function profile() {
-            $location.url("/user/" + vm.userId);
+            $location.url("/user");
         }
 
         function clear() {
@@ -83,14 +83,18 @@
 
         function createWebsite(website) {
             if (website) {
-                WebsiteService
-                    .createWebsite(vm.userId, website)
-                    .then(function (response) {
-                        vm.success = "Website created";
-                        $location.url("/user/" + vm.userId + "/website");
-                    }, function (error) {
-                        vm.alert = "Unable to create website";
-                    });
+                if (website.name) {
+                    WebsiteService
+                        .createWebsite(vm.userId, website)
+                        .then(function (response) {
+                            vm.success = "Website created";
+                            $location.url("/user/" + vm.userId + "/website");
+                        }, function (error) {
+                            vm.alert = "Unable to create website";
+                        });
+                } else {
+                    vm.alert = "Please provide a name";
+                }
             } else {
                 vm.alert = "Please enter details to save";
             }
@@ -105,7 +109,7 @@
         }
 
         function profile() {
-            $location.url("/user/" + vm.userId);
+            $location.url("/user");
         }
 
         function clear() {
@@ -154,14 +158,23 @@
         }
 
         function updateWebsite(website) {
-            WebsiteService
-                .updateWebsite(vm.websiteId, website)
-                .then(function (response) {
-                    vm.success = "Website Updated";
-                    $location.url("/user/" + vm.userId + "/website");
-                }, function (error) {
-                    vm.alert = "Unable to update website";
-                });
+            if (website) {
+                if (website.name) {
+                    WebsiteService
+                        .updateWebsite(vm.websiteId, website)
+                        .then(function (response) {
+                            vm.success = "Website Updated";
+                            $location.url("/user/" + vm.userId + "/website");
+                        }, function (error) {
+                            vm.alert = "Unable to update website";
+                        });
+                } else {
+                    vm.alert = "Please provide a name";
+                }
+            } else {
+                vm.alert = "Please enter details to update";
+            }
+
         }
 
         function deleteWebsite() {
@@ -184,7 +197,7 @@
         }
 
         function profile() {
-            $location.url("/user/" + vm.userId);
+            $location.url("/user");
         }
 
         function clear() {

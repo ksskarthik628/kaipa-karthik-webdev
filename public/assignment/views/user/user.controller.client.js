@@ -59,7 +59,7 @@
                         .then(function (response) {
                             var user = response.data;
                             $rootScope.currentUser = user;
-                            $location.url("/user/" + user._id);
+                            $location.url("/user");
                             }, function (error) {
                                 if (error.status === 409)
                                     vm.alert = "Username taken";

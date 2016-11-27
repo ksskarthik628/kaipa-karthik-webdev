@@ -5,24 +5,35 @@
         .controller('RegisterController', RegisterController)
         .controller('ProfileController', ProfileController);
     
-    function LoginController($location, UserService) {
+    function LoginController($location, $rootScope, UserService) {
         var vm = this;
         vm.login = login;
         vm.register = register;
         vm.clear = clear;
 
         function login(user) {
-            UserService
-                .findUserByCredentials(user.username, user.password)
-                .then(function (response) {
-                    var user = response.data;
-                    if (user)
-                        $location.url("/user/" + user._id);
-                    else
-                        vm.alert = "Unable to find user";
-                }, function (error) {
-                    vm.alert = "Unable to find user";
-                });
+            if (user) {
+                if (user.username && user.password) {
+                    UserService
+                        .login(user)
+                        .then(function (response) {
+                            var user = response.data;
+                            if (user) {
+                                $rootScope.currentUser = user;
+                                $location.url("/user/" + user._id);
+                            }
+                            else
+                                vm.alert = "Unable to find user";
+                            }, function (error) {
+                                vm.alert = "Unable to find user";
+                        });
+                } else {
+                    vm.alert = "Please enter username and password";
+                }
+            } else {
+                vm.alert = "Please enter username and password";
+            }
+
         }
 
         function register() {
@@ -34,7 +45,7 @@
         }
     }
 
-    function RegisterController($location, UserService) {
+    function RegisterController($location, $rootScope, UserService) {
         var vm = this;
         vm.register = register;
         vm.cancel = cancel;
@@ -44,15 +55,16 @@
             if (user.username) {
                 if (user.password === user.verifyPassword) {
                     UserService
-                        .createUser(user)
+                        .register(user)
                         .then(function (response) {
                             var user = response.data;
+                            $rootScope.currentUser = user;
                             $location.url("/user/" + user._id);
-                        }, function (error) {
-                            if (error.status === 409)
-                                vm.alert = "Username taken";
-                            else
-                                vm.alert = "Unable to create user";
+                            }, function (error) {
+                                if (error.status === 409)
+                                    vm.alert = "Username taken";
+                                else
+                                    vm.alert = "Unable to create user";
                         });
                 } else {
                     vm.alert = "Make sure passwords match";
@@ -71,9 +83,9 @@
         }
     }
 
-    function ProfileController($location, $routeParams, UserService) {
+    function ProfileController($location, $rootScope, $routeParams, UserService) {
         var vm = this;
-        vm.userId = $routeParams["uid"];
+        vm.userId = $rootScope.currentUser._id;
         vm.updateUser = updateUser;
         vm.website = website;
         vm.logout = logout;
@@ -106,13 +118,21 @@
         }
 
         function logout() {
-            $location.url("/login");
+            UserService
+                .logout()
+                .then(function (response) {
+                    $rootScope.currentUser = null;
+                    $location.url("/login");
+                }, function (err) {
+                    vm.alert = "Unable to logout";
+                });
         }
 
         function deleteAccount() {
             UserService
                 .deleteUser(vm.userId)
                 .then(function (response) {
+                    $rootScope.currentUser = null;
                     $location.url("/login");
                 }, function (error) {
                     vm.alert = "Unable to delete account";

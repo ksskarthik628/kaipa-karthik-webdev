@@ -9,7 +9,7 @@ module.exports = function () {
         email: String,
         phone: String,
         websites: [{type: mongoose.Schema.Types.ObjectId, ref: 'Website'}],
-        dateCreates: {type: Date, default: Date.now()}
+        dateCreated: {type: Date, default: Date.now()}
     }, {collection: "assignment.user"});
 
     return UserSchema;

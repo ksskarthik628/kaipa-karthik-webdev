@@ -33,6 +33,17 @@
             <strong>Success!</strong> {{model.success}}
         </div>
 
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input ng-model="model.widget.name"
+                       id="name"
+                       type="text"
+                       class="form-control"
+                       value="{{model.widget.name}}">
+            </div>
+        </form>
+
         <div ng-model="model.widget.text"
              text-angular
              ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],

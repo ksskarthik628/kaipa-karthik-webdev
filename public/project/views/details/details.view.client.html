@@ -8,7 +8,7 @@
                 <span class="label label-default pull-left">Release: {{model.movie.release_date}}</span>
                 <h2>
                     {{model.movie.title}}
-                    <span ng-show="model.user._id">
+                    <span ng-show="user._id">
                         <a href=""
                            ng-click="model.likeMovie()"
                            ng-hide="model.isLiked">
@@ -20,12 +20,12 @@
                             <i class="fa fa-thumbs-up green"></i>
                         </a>
                     </span>
-                    <span ng-show="!model.user._id">
+                    <span ng-show="!user._id">
                         <a href=""
                            data-toggle="tooltip"
                            data-placement="top"
                            title="Please login to like!"
-                           ng-disabled="!model.user._id">
+                           ng-disabled="!user._id">
                             <i class="fa fa-thumbs-o-up orange"></i>
                         </a>
                     </span>

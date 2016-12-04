@@ -134,7 +134,7 @@ module.exports = function (app, models) {
     }
 
     function loggedIn(req, res) {
-        res.send(req.isAuthenticated() ? req.user : '0');
+        res.send(req.isAuthenticated() ? req.user : null);
     }
 
     function register(req, res) {
@@ -303,7 +303,7 @@ module.exports = function (app, models) {
             .findUserById(userId)
             .then(function (user) {
                 return movieModel
-                    .findAllLikedMovies(user.likes);
+                    .findAllLikedMovies(user.movieLikes);
             }, function (err) {
                 res.status(400).send(err);
             })

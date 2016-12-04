@@ -16,10 +16,9 @@ module.exports = function () {
     };
     return api;
 
-    function addReview(userId, mid, movieId, review) {
+    function addReview(userId, mid, review) {
         review._user = userId;
-        review._movie = mid;
-        review.movieId = movieId;
+        review.movieId = mid;
         return BBBReview.create(review);
     }
 
@@ -28,7 +27,7 @@ module.exports = function () {
     }
     
     function findAllReviewsForId(mid) {
-        return BBBReview.find({_movie: mid});
+        return BBBReview.find({movieId: mid});
     }
     
     function findAllReviewsForUserId(userId) {

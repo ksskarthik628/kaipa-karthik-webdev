@@ -9,7 +9,7 @@
         var api = {
             addReview: addReview,
             deleteReview: deleteReview,
-            findAllReviewsForId: findAllReviewsForId,
+            findAllReviewsForId: findAllReviewsForMovieId,
             findAllReviewsForUserId: findAllReviewsForUserId,
             updateReview: updateReview
         };
@@ -25,7 +25,7 @@
             return $http.delete(url);
         }
         
-        function findAllReviewsForId(movieId) {
+        function findAllReviewsForMovieId(movieId) {
             var url = "/bbb/movie/" + movieId + "/reviews";
             return $http.get(url);
         }

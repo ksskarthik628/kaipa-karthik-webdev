@@ -6,7 +6,7 @@ module.exports = function (app, models) {
     var bluebird = require('bluebird');
 
     app.post('/bbb/user/:uid/movie/:mid', addReview);
-    app.get('/bbb/movie/:mid/reviews', findAllReviewsForId);
+    app.get('/bbb/movie/:mid/reviews', findAllReviewsForMovieId);
     app.get('/bbb/user/:uid/reviews', findAllReviewsForUserId);
     app.put('/bbb/review/:rid', updateReview);
     app.delete('/bbb/review/:rid', deleteReview);
@@ -24,10 +24,10 @@ module.exports = function (app, models) {
             });
     }
 
-    function findAllReviewsForId(req, res) {
+    function findAllReviewsForMovieId(req, res) {
         var mid = req.params['mid'];
         reviewModel
-            .findAllReviewsForId(mid)
+            .findAllReviewsForMovieId(mid)
             .then(function (reviews) {
                 res.json(reviews);
             }, function (err) {
@@ -45,7 +45,7 @@ module.exports = function (app, models) {
                 reviews.forEach(function (review, index, array) {
                     promiseArray
                         .push(movieModel
-                            .findMovieById(review._movie)
+                            .findMovieByMovieId(review.movieId)
                             .then(function (movie) {
                                 if (movie) {
                                     review.movie = movie;

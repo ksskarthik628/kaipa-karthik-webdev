@@ -52,15 +52,15 @@ module.exports = function () {
     }
     
     function likeMovie(userId, mid) {
-        return BBBUser.update({_id: userId}, {$addToSet: {likes: mid}});
+        return BBBUser.update({_id: userId}, {$addToSet: {movieLikes: mid}});
     }
     
     function unlikeMovie(userId, mid) {
-        return BBBUser.update({_id: userId}, {$pullAll: {likes: [mid]}});
+        return BBBUser.update({_id: userId}, {$pullAll: {movieLikes: [mid]}});
     }
 
     function isLiked(userId, mid) {
-        return BBBUser.findOne({_id: userId}, {$and: [{likes: {$in: [mid]}}]});
+        return BBBUser.findOne({_id: userId}, {$and: [{movieLikes: {$in: [mid]}}]});
     }
 
     function addFollower(userId, followerId) {

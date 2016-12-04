@@ -5,10 +5,10 @@ module.exports = function () {
         title: String,
         description: String,
         timestamp: {type: Date, default: Date.now()},
-        movieId: Number,
+        movieId: String,
         _movie: {type: mongoose.Schema.Types.ObjectId, ref: 'BBBMovie'},
         _user: {type: mongoose.Schema.Types.ObjectId, ref: 'BBBUser'},
-        rating: Number
+        rating: String
     }, {collection: 'bbb.review'});
     return ReviewSchema;
 

@@ -2,7 +2,7 @@ module.exports = function () {
 
     var mongoose = require('mongoose');
     var MovieSchema = mongoose.Schema({
-        movieId: Number,
+        movieId: String,
         title: String,
         imageUrl: String
     }, {collection: 'bbb.movie'});

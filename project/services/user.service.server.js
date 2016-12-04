@@ -368,7 +368,7 @@ module.exports = function (app, models) {
     }
 
     function isAdmin(user) {
-        return (user.roles.indexOf("admin") > -1);
+        return (user.role.indexOf("admin") > -1);
     }
 
     function createUserByAdmin(req, res) {
@@ -417,6 +417,7 @@ module.exports = function (app, models) {
         var user = req.user;
         if (isAdmin(user)) {
             var newUser = req.body;
+            newUser.password = bcrypt.hashSync(newUser.password);
             var newUserId = req.params['uid'];
             userModel
                 .updateUser(newUserId, newUser)

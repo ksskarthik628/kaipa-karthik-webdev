@@ -21,8 +21,18 @@ app.use(passport.session());
 
 app.use(express.static(__dirname + '/public'));
 
+var connectionString = 'mongodb://127.0.0.1:27017/wamlocal';
+
+if(process.env.WEB_CONCURRENCY ) {
+    connectionString = process.env.MONGODB_URI;
+}
+
+var mongoose = require("mongoose");
+mongoose.connect(connectionString);
+
 // require("./test/app.js")(app);
 require("./assignment/app")(app);
+require("./project/app")(app);
 
 var port = process.env.PORT || 3000;
 

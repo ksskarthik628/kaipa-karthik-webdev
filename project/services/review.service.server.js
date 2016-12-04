@@ -2,6 +2,7 @@ module.exports = function (app, models) {
 
     var movieModel = models.movieModel;
     var reviewModel = models.reviewModel;
+
     var bluebird = require('bluebird');
 
     app.post('/bbb/user/:uid/movie/:mid', addReview);

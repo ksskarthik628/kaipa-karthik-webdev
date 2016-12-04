@@ -3,7 +3,7 @@ module.exports = function () {
     var mongoose = require('mongoose');
     mongoose.Promise = require('bluebird');
     var UserSchema = require('./user.schema.server')();
-    var User = mongoose.model('User', UserSchema);
+    var BBBUser = mongoose.model('BBBUser', UserSchema);
 
     var api = {
         createUser: createUser,
@@ -11,88 +11,93 @@ module.exports = function () {
         findUserById: findUserById,
         findUserByUsername: findUserByUsername,
         findUserByCredentials: findUserByCredentials,
+        findUserByFacebookId: findUserByFacebookId,
         likeMovie: likeMovie,
-        undoLikeMovie: undoLikeMovie,
-        isMovieLiked: isMovieLiked,
+        unlikeMovie: unlikeMovie,
+        isLiked: isLiked,
         addFollower: addFollower,
         addFollowing: addFollowing,
         removeFollowing: removeFollowing,
         removeFollower: removeFollower,
-        isAlreadyFollowing: isAlreadyFollowing,
+        isFollowing: isFollowing,
         findAllFollowingUsers: findAllFollowingUsers,
-        findAllFollowerUsers: findAllFollowerUsers,
+        findAllFollowers: findAllFollowers,
         updateUser: updateUser,
         deleteUser: deleteUser
     };
     return api;
 
     function createUser(user) {
-        return User.create(user);
+        return BBBUser.create(user);
     }
     
     function findAllUsers() {
-        return User.find();
+        return BBBUser.find();
     }
 
     function findUserById(userId) {
-        return User.findById(userId);
+        return BBBUser.findById(userId);
     }
 
     function findUserByUsername(username) {
-        return User.findOne({username: username});
+        return BBBUser.findOne({username: username});
     }
     
     function findUserByCredentials(username, password) {
-        return User.findOne({username: username, password: password});
-    }
-    
-    function likeMovie(userId, mid, movieId) {
-        return User.update({_id: userId}, {$addToSet: {movieLikes: movieId, likes: mid}});
-    }
-    
-    function undoLikeMovie(userId, mid, movieId) {
-        return User.update({_id: userId}, {$pullAll: {movieLikes: [movieId], likes: [mid]}});
+        return BBBUser.findOne({username: username, password: password});
     }
 
-    function isMovieLiked(userId, mid, movieId) {
-        return User.findOne({_id: userId}, {$and: [{movieLikes: {$in: [movieId]}}, {likes: {$in: [mid]}}]});
+    function findUserByFacebookId(facebookId) {
+        return BBBUser.findOne({'facebook.id': facebookId});
+    }
+    
+    function likeMovie(userId, mid) {
+        return BBBUser.update({_id: userId}, {$addToSet: {likes: mid}});
+    }
+    
+    function unlikeMovie(userId, mid) {
+        return BBBUser.update({_id: userId}, {$pullAll: {likes: [mid]}});
+    }
+
+    function isLiked(userId, mid) {
+        return BBBUser.findOne({_id: userId}, {$and: [{likes: {$in: [mid]}}]});
     }
 
     function addFollower(userId, followerId) {
-        return User.update({_id: userId}, {$addToSet: {followers: followerId}});
+        return BBBUser.update({_id: userId}, {$addToSet: {followers: followerId}});
     }
 
     function addFollowing(userId, followingId) {
-        return User.update({_id: userId}, {$addToSet: {following: followingId}});
+        return BBBUser.update({_id: userId}, {$addToSet: {following: followingId}});
     }
 
     function removeFollowing(userId, followingId) {
-        return User.update({_id: userId}, {$pullAll: {following: followingId}});
+        return BBBUser.update({_id: userId}, {$pullAll: {following: followingId}});
     }
 
     function removeFollower(userId, followerId) {
-        return User.update({_id: userId}, {$pullAll: {followers: followerId}});
+        return BBBUser.update({_id: userId}, {$pullAll: {followers: followerId}});
     }
     
-    function isAlreadyFollowing(userId, followId) {
-        return User.findOne({_id: userId, following: {$in: [followId]}});
+    function isFollowing(userId, followId) {
+        return BBBUser.findOne({_id: userId, following: {$in: [followId]}});
     }
     
     function findAllFollowingUsers(userIds) {
-        return User.find({_id: {$in: userIds}});
+        return BBBUser.find({_id: {$in: userIds}});
     }
 
-    function findAllFollowerUsers(userIds) {
-        return User.find({_id: {$in: userIds}});
+    function findAllFollowers(userIds) {
+        return BBBUser.find({_id: {$in: userIds}});
     }
 
     function updateUser(userId, user) {
         delete user._id;
-        return User.update({_id: userId}, {$set: user});
+        return BBBUser.update({_id: userId}, {$set: user});
     }
 
     function deleteUser(userId) {
-        return User.remove({_id: userId});
+        return BBBUser.remove({_id: userId});
     }
 
 };

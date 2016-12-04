@@ -3,7 +3,7 @@ module.exports = function () {
     var mongoose = require('mongoose');
     mongoose.Promise = require('bluebird');
     var ReviewSchema = require('./review.schema.server')();
-    var Review = mongoose.model('Review', ReviewSchema);
+    var BBBReview = mongoose.model('BBBReview', ReviewSchema);
 
     var api = {
         addReview: addReview,
@@ -20,33 +20,33 @@ module.exports = function () {
         review._user = userId;
         review._movie = mid;
         review.movieId = movieId;
-        return Review.create(review);
+        return BBBReview.create(review);
     }
 
     function findAllReviewsForMovieId(movieId) {
-        return Review.find({movieId: movieId});
+        return BBBReview.find({movieId: movieId});
     }
     
     function findAllReviewsForId(mid) {
-        return Review.find({_movie: mid});
+        return BBBReview.find({_movie: mid});
     }
     
     function findAllReviewsForUserId(userId) {
-        return Review.find({_user: userId});
+        return BBBReview.find({_user: userId});
     }
     
     function findReviewById(reviewId) {
-        return Review.findById(reviewId);
+        return BBBReview.findById(reviewId);
     }
     
     function updateReview(reviewId, review) {
         delete review._id;
         review.timestamp = Date.now();
-        return Review.update({_id: reviewId}, {$set: review});
+        return BBBReview.update({_id: reviewId}, {$set: review});
     }
 
     function deleteReview(reviewId) {
-        return Review.remove({_id: reviewId});
+        return BBBReview.remove({_id: reviewId});
     }
 
 };

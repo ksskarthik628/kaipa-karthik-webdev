@@ -3,7 +3,7 @@ module.exports = function () {
     var mongoose = require('mongoose');
     mongoose.Promise = require('bluebird');
     var MovieSchema = require('./movie.schema.server')();
-    var Movie = mongoose.model('Movie', MovieSchema);
+    var BBBMovie = mongoose.model('BBBMovie', MovieSchema);
 
     var api = {
         addMovie: addMovie,
@@ -16,27 +16,27 @@ module.exports = function () {
     return api;
 
     function addMovie(movie) {
-        return Movie.create(movie);
+        return BBBMovie.create(movie);
     }
     
     function findMovieById(id) {
-        return Movie.findById(id);
+        return BBBMovie.findById(id);
     }
 
     function findMovieByMovieId(movieId) {
-        return Movie.findOne({movieId: movieId});
+        return BBBMovie.findOne({movieId: movieId});
     }
     
     function findAllLikedMovies(movieIds) {
-        return Movie.find({movieId: {$in: movieIds}});
+        return BBBMovie.find({movieId: {$in: movieIds}});
     }
 
     function deleteMovieById(id) {
-        return Movie.remove({_id: id});
+        return BBBMovie.remove({_id: id});
     }
 
     function deleteMovieByMovieId(movieId) {
-        return Movie.remove({movieId: movieId});
+        return BBBMovie.remove({movieId: movieId});
     }
 
 };

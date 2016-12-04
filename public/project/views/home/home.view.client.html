@@ -1,0 +1,44 @@
+<div>
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <div class="container">
+            <div class="carousel-caption">
+                <h1 class="brandname">Big Bucket of Blockbusters</h1>
+                <p>Reach into the bottomless bucket</p>
+                <div class="input-group">
+                    <input type="text" class="form-control search-box"
+                           ng-model="model.movie.title"
+                           ng-keypress="model.eventHandler($event, model.movie.title)"
+                           placeholder="Search for a movie by title">
+                    <a ui-sref="home.result({movieTitle: model.movie.title})"
+                       class="input-group-addon search-box btn-primary btn-search">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-inner" role="listbox">
+            <div class="item" ng-class="{active:!$index}" ng-repeat="slide in model.slides">
+                <img ng-src="{{slide.imageUrl}}">
+            </div>
+            <a class="left carousel-control"
+               href=""
+               ng-click="model.slide('prev')"
+               role="button"
+               data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </a>
+            <a class="right carousel-control"
+               href=""
+               ng-click="model.slide('next')"
+               role="button"
+               data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+
+    <div ui-view></div>
+
+</div>

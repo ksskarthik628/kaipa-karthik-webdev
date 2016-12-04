@@ -52,7 +52,7 @@ module.exports = function (app, models) {
 
     // Admin requests
     app.post('/bbb/admin/user', auth, createUserByAdmin);
-    app.get('/bbb/admin/user', auth, findAllUsersForAdmin);
+    app.get('/bbb/admin/users', auth, findAllUsersForAdmin);
     app.put('/bbb/admin/user/:uid', auth, updateUserByAdmin);
     app.delete('/bbb/admin/user/:uid', auth, deleteUserByAdmin);
 

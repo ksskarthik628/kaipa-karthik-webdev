@@ -1,22 +1,22 @@
 <div class="row">
     <div class="col-sm-8">
         <img class="img-responsive margin-top"
-             ng-src="{{model.movie.imageUrl}}"/>
+             ng-src="{{detailsControllerModel.movie.imageUrl}}"/>
 
         <div class="panel panel-default">
             <div class="panel-body">
-                <span class="label label-default pull-left">Release: {{model.movie.release_date}}</span>
+                <span class="label label-default pull-left">Release: {{detailsControllerModel.movie.release_date}}</span>
                 <h2>
-                    {{model.movie.title}}
+                    {{detailsControllerModel.movie.title}}
                     <span ng-show="user._id">
                         <a href=""
-                           ng-click="model.likeMovie()"
-                           ng-hide="model.isLiked">
+                           ng-click="detailsControllerModel.likeMovie()"
+                           ng-hide="detailsControllerModel.isLiked">
                             <i class="fa fa-thumbs-o-up orange"></i>
                         </a>
                         <a href=""
-                           ng-click="model.unlikeMovie()"
-                           ng-show="model.isLiked">
+                           ng-click="detailsControllerModel.unlikeMovie()"
+                           ng-show="detailsControllerModel.isLiked">
                             <i class="fa fa-thumbs-up green"></i>
                         </a>
                     </span>
@@ -31,22 +31,22 @@
                     </span>
                 </h2>
 
-                <span class="h5" ng-show="model.avgRating != 0">
+                <span class="h5" ng-show="detailsControllerModel.avgRating != 0">
             Average Rating:
-                <ng-rating ng-model="model.avgRating"
+                <ng-rating ng-model="detailsControllerModel.avgRating"
                            editable="false"
                            show-grade="true">
                 </ng-rating>
         </span>
 
                 <div class="caption">
-            <span class="h5 text-muted" ng-repeat="genre in model.movie.genres">
+            <span class="h5 text-muted" ng-repeat="genre in detailsControllerModel.movie.genres">
             {{"#" + genre.name + " "}}
         </span>
                 </div>
 
                 <i class="fa fa-clock-o" aria-hidden="true">
-                    {{model.movie.runtime + " mins"}}
+                    {{detailsControllerModel.movie.runtime + " mins"}}
                 </i>
 
                 <hr class="nomargin margin-top">
@@ -54,13 +54,13 @@
 
             <div class="panel-body">
                 <h5>Plot</h5>
-                <p>{{model.movie.overview}}</p>
+                <p>{{detailsControllerModel.movie.overview}}</p>
                 <h5>Production Companies</h5>
-                <ul ng-repeat="movieProductionCompany in model.movie.production_companies">
+                <ul ng-repeat="movieProductionCompany in detailsControllerModel.movie.production_companies">
                     <li>{{movieProductionCompany.name}}</li>
                 </ul>
                 <h5>Cast</h5>
-                <div ng-repeat="castMember in model.cast">
+                <div ng-repeat="castMember in detailsControllerModel.cast">
                     <div class="media bottom-margin">
                         <div class="media-left">
                             <img class="media-object cast-object" ng-src="{{castMember.imageUrl}}" alt="">
@@ -73,13 +73,13 @@
             </div>
 
 
-            <div class="visible-xs" ng-show="model.videos.length > 0">
+            <div class="visible-xs" ng-show="detailsControllerModel.videos.length > 0">
                 <hr>
                 <div class="panel-heading">
                     <h4>Trailers</h4>
                 </div>
 
-                <div ng-repeat="video in model.videos">
+                <div ng-repeat="video in detailsControllerModel.videos">
                     <iframe width="100%"
                             height="250px"
                             ng-src="{{video.url}}"
@@ -96,11 +96,11 @@
                     <h4>Reviews</h4>
                 </div>
 
-                <div ng-repeat="review in model.reviews">
+                <div ng-repeat="review in detailsControllerModel.reviews">
                     <div class="panel-body">
-                        <div ng-if="model.selectedIndex === $index">
+                        <div ng-if="detailsControllerModel.selectedIndex === $index">
                             <p>
-                                <ng-rating ng-model="model.editReview.rating"
+                                <ng-rating ng-model="detailsControllerModel.editReview.rating"
                                            editable="true">
                                 </ng-rating>
                             </p>
@@ -108,16 +108,16 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control"
                                            placeholder="Please enter title of the review"
-                                           ng-model="model.editReview.title"/>
+                                           ng-model="detailsControllerModel.editReview.title"/>
                                 </div>
                                 <div class="form-group">
                     <textarea class="form-control" rows="3" placeholder="Please enter description of the review"
-                              ng-model="model.editReview.description"></textarea>
+                              ng-model="detailsControllerModel.editReview.description"></textarea>
                                 </div>
                             </form>
                         </div>
 
-                        <div class="media" ng-hide="model.selectedIndex === $index">
+                        <div class="media" ng-hide="detailsControllerModel.selectedIndex === $index">
                             <a class="pull-left" href="">
                                 <img class="media-object"
                                      src="http://placehold.it/64x64"
@@ -166,14 +166,14 @@
 
                         <div class="btn-group-md pull-right">
                             <a href="" class="btn btn-success" role="button"
-                               ng-if="model.selectedIndex === $index"
-                               ng-click="model.updateReview(model.editReview)">
+                               ng-if="detailsControllerModel.selectedIndex === $index"
+                               ng-click="detailsControllerModel.updateReview(detailsControllerModel.editReview)">
                                 <i class="fa fa-floppy-o" aria-hidden="true"></i>
                                 Update
                             </a>
                             <a href="" class="btn btn-danger" role="button"
-                               ng-if="model.selectedIndex === $index"
-                               ng-click="model.cancelReview()">
+                               ng-if="detailsControllerModel.selectedIndex === $index"
+                               ng-click="detailsControllerModel.cancelReview()">
                                 <i class="fa fa-times" aria-hidden="true"></i>
                                 Cancel
                             </a>
@@ -181,14 +181,14 @@
 
                         <div class="btn-group-md pull-right">
                             <a href="" class="btn btn-warning" role="button"
-                               ng-if="model.selectedIndex !== $index && model.user._id == review.userId"
-                               ng-click="model.selectReview($index)">
+                               ng-if="detailsControllerModel.selectedIndex !== $index && detailsControllerModel.user._id == review.userId"
+                               ng-click="detailsControllerModel.selectReview($index)">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                                 Edit
                             </a>
                             <a href="" class="btn btn-danger" role="button"
-                               ng-if="model.selectedIndex !== $index && model.user._id == review.userId"
-                               ng-click="model.deleteReview($index)">
+                               ng-if="detailsControllerModel.selectedIndex !== $index && detailsControllerModel.user._id == review.userId"
+                               ng-click="detailsControllerModel.deleteReview($index)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                                 Delete
                             </a>
@@ -202,21 +202,21 @@
                     <div class="well">
                         <h4>Write a Review:</h4>
                         <p>
-                            <ng-rating ng-model="model.review.rating"
+                            <ng-rating ng-model="detailsControllerModel.review.rating"
                                        editable="true">
                             </ng-rating>
                         </p>
                         <form>
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Please enter title of the review"
-                                       ng-model="model.review.title"/>
+                                       ng-model="detailsControllerModel.review.title"/>
                             </div>
                             <div class="form-group">
                     <textarea class="form-control" rows="3" placeholder="Please enter description of the review"
-                              ng-model="model.review.description"></textarea>
+                              ng-model="detailsControllerModel.review.description"></textarea>
                             </div>
                             <a href="" class="btn btn-success" ng-show="user._id"
-                               ng-click="model.addReview(model.review)"
+                               ng-click="detailsControllerModel.addReview(detailsControllerModel.review)"
                                role="button">Submit</a>
                             <a href="" class="btn btn-warning" ng-show="!user._id" ng-disabled="!user._id"
                                role="button">Please login to review!</a>
@@ -230,11 +230,11 @@
     </div>
     <div class="col-sm-4 margin-top">
         <div class="panel panel-default">
-            <div class="panel-body less-padding hidden-xs" ng-show="model.videos.length > 0">
+            <div class="panel-body less-padding hidden-xs" ng-show="detailsControllerModel.videos.length > 0">
                 <div class="caption">
                     <h4>Trailers</h4>
                 </div>
-                <div ng-repeat="video in model.videos">
+                <div ng-repeat="video in detailsControllerModel.videos">
                     <iframe width="100%"
                             height="200px"
                             ng-src="{{video.url}}"
@@ -243,13 +243,13 @@
                     </iframe>
                 </div>
             </div>
-            <div ng-show="model.similar.length > 0">
+            <div ng-show="detailsControllerModel.similar.length > 0">
                 <div class="panel-body less-padding">
                     <div class="caption">
                         <h4>Similar movies</h4>
                     </div>
                 </div>
-                <div class="panel-body less-padding" ng-repeat="item in model.similar | limitTo:5">
+                <div class="panel-body less-padding" ng-repeat="item in detailsControllerModel.similar | limitTo:5">
                     <a ui-sref="details({movieId: item.id})">
                         <img class="img-responsive" ng-src="{{item.imageUrl}}"/>
                         <div class="caption">

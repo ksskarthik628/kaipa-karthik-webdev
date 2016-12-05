@@ -2,18 +2,18 @@
     <h3 class="page-header h3-page-header">Search Results</h3>
 </div>
 
-<div class="row" ng-show="model.error">
+<div class="row" ng-show="homeResultControllerModel.error">
     <div class="alert alert-warning alert-box" role="alert">
         <b>Warning! </b>
-        {{model.error}}
+        {{homeResultControllerModel.error}}
     </div>
 </div>
 
 <div class="row"
-     infinite-scroll="model.pagingFunction()"
-     infinite-scroll-disabled='model.busy'
+     infinite-scroll="homeResultControllerModel.pagingFunction()"
+     infinite-scroll-disabled='homeResultControllerModel.busy'
      infinite-scroll-distance="1">
-    <div ng-repeat="movie in model.movies">
+    <div ng-repeat="movie in homeResultControllerModel.movies">
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
                 <span class="label label-default pull-right">Release: {{movie.release_date}}</span>

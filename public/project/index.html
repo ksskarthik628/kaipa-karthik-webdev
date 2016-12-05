@@ -25,8 +25,31 @@
     <script src="services/review.service.client.js"></script>
     <script src="services/user.service.client.js"></script>
     <script src="views/admin/admin.controller.client.js"></script>
+    <script src="views/details/details.controller.client.js"></script>
+    <script src="views/header/header.controller.client.js"></script>
+    <script src="views/home/home.controller.client.js"></script>
+    <script src="views/home/home-popular.controller.client.js"></script>
+    <script src="views/home/home-result.controller.client.js"></script>
+    <script src="views/main/main.controller.client.js"></script>
+    <script src="views/user/login/login.controller.client.js"></script>
+    <script src="views/user/profile/edit-profile.controller.client.js"></script>
+    <script src="views/user/profile/followers.controller.client.js"></script>
+    <script src="views/user/profile/following.controller.client.js"></script>
+    <script src="views/user/profile/likes.controller.client.js"></script>
+    <script src="views/user/profile/profile.controller.client.js"></script>
+    <script src="views/user/profile/reviews.controller.client.js"></script>
+    <script src="views/user/profile/sidebar.controller.client.js"></script>
+    <script src="views/user/register/register.controller.client.js"></script>
 </head>
-<body>
-    <h1>Project Home Page</h1>
+
+<body ng-controller="MainController as mainControllerModel">
+
+    <div ng-include="'views/header/header.view.html'"></div>
+
+    <div class="container-fluid">
+        <div ui-view></div>
+    </div>
+
 </body>
+
 </html>

@@ -118,7 +118,7 @@
         }
         
         function setCurrentUser(user) {
-            $rootScope.currentUser = user;
+            $rootScope.user = user;
         }
 
         function unfollow(userId, unfollowId) {

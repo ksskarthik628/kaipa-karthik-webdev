@@ -36,15 +36,16 @@
                     var user = response.data;
                     if (user) {
                         vm.user = user;
-                        return UserService.findUserById(vm.user._id);
-                    }
-                })
-                .then(function (response) {
-                    var user = response.data;
-                    if (user) {
-                        vm.user = user;
+                        UserService
+                            .findUserById(vm.user._id)
+                            .then(function (response) {
+                            if (response.data) {
+                                vm.user = response.data;
+                            }
+                        });
                     }
                 });
+
 
             MovieService
                 .findSimilarMovies(vm.movieId)
@@ -260,18 +261,20 @@
         }
 
         function isLiked() {
-            UserService
-                .isLiked(vm.user._id, vm.movieId)
-                .then(function (response) {
-                    var user = response.data;
-                    if (user) {
-                        console.log(user);
-                        vm.isLiked = true;
-                    }
-                    else {
-                        vm.isLiked = false;
-                    }
-                });
+            if (vm.user) {
+                UserService
+                    .isLiked(vm.user._id, vm.movieId)
+                    .then(function (response) {
+                        var user = response.data;
+                        if (user) {
+                            console.log(user);
+                            vm.isLiked = true;
+                        }
+                        else {
+                            vm.isLiked = false;
+                        }
+                    });
+            }
         }
 
         function clear() {

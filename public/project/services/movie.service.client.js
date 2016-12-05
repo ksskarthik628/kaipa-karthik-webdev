@@ -81,21 +81,21 @@
         function findTopMovies() {
             var url = baseUrl
                 .replace("SEARCH_PARAM", topMovies)
-                .replace("API_KET", TMDKey);
+                .replace("API_KEY", TMDKey);
             return $http.get(url);
         }
 
         function findUpcomingMovies() {
             var url = baseUrl
                 .replace("SEARCH_PARAM", upcomingMovies)
-                .replace("API_KET", TMDKey);
+                .replace("API_KEY", TMDKey);
             return $http.get(url);
         }
         
         function getGenreList() {
             var url = baseUrl
                 .replace("SEARCH_PARAM", genreList)
-                .replace("API_KET", TMDKey);
+                .replace("API_KEY", TMDKey);
             return $http.get(url);
         }
 

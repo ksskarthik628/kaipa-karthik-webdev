@@ -9,7 +9,7 @@
         var api = {
             addReview: addReview,
             deleteReview: deleteReview,
-            findAllReviewsForId: findAllReviewsForMovieId,
+            findAllReviewsForMovieId: findAllReviewsForMovieId,
             findAllReviewsForUserId: findAllReviewsForUserId,
             updateReview: updateReview
         };

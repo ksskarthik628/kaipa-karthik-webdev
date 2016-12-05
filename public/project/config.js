@@ -14,7 +14,7 @@
         $stateProvider
             .state("home", {
                 url: "/home",
-                templateUrl: "views/home/home.view.html",
+                templateUrl: "views/home/home.view.client.html",
                 controller: "HomeController",
                 controllerAs: "homeControllerModel",
                 resolve: {
@@ -23,7 +23,7 @@
             })
             .state("home.result", {
                 url: "/result/:movieTitle",
-                templateUrl: "views/home/home-result.view.html",
+                templateUrl: "views/home/home-result.view.client.html",
                 controller: "HomeResultController",
                 controllerAs: "homeResultControllerModel",
                 resolve: {
@@ -32,7 +32,7 @@
             })
             .state("home.popular", {
                 url: "/popular",
-                templateUrl: "views/home/home-popular.view.html",
+                templateUrl: "views/home/home-popular.view.client.html",
                 controller: "HomePopularController",
                 controllerAs: "homePopularControllerModel",
                 resolve: {
@@ -41,7 +41,7 @@
             })
             .state("details", {
                 url: "/details/:movieId",
-                templateUrl: "views/details/details.view.html",
+                templateUrl: "views/details/details.view.client.html",
                 controller: "DetailsController",
                 controllerAs: "detailsControllerModel",
                 resolve: {
@@ -50,19 +50,19 @@
             })
             .state("login", {
                 url: "/login",
-                templateUrl: "views/users/login/login.view.html",
+                templateUrl: "views/user/login/login.view.client.html",
                 controller: "LoginController",
                 controllerAs: "loginControllerModel"
             })
             .state("register", {
                 url: "/register",
-                templateUrl: "views/users/register/register.view.html",
+                templateUrl: "views/user/register/register.view.client.html",
                 controller: "RegisterController",
                 controllerAs: "registerControllerModel"
             })
             .state("profile", {
                 url: "/profile",
-                templateUrl: "views/users/profile/profile.view.html",
+                templateUrl: "views/user/profile/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "profileControllerModel",
                 params: {
@@ -74,7 +74,7 @@
             })
             .state("profile.edit-profile", {
                 url: "/:userId/edit-profile",
-                templateUrl: "views/users/profile/edit-profile.view.html",
+                templateUrl: "views/user/profile/edit-profile.view.client.html",
                 controller: "EditProfileController",
                 controllerAs: "editProfileControllerModel",
                 resolve: {
@@ -83,31 +83,31 @@
             })
             .state("profile.followers", {
                 url: "/:userId/followers",
-                templateUrl: "views/users/profile/followers.view.html",
+                templateUrl: "views/user/profile/followers.view.client.html",
                 controller: "FollowersController",
                 controllerAs: "followersControllerModel"
             })
             .state("profile.following", {
                 url: "/:userId/following",
-                templateUrl: "views/users/profile/following.view.html",
+                templateUrl: "views/user/profile/following.view.client.html",
                 controller: "FollowingController",
                 controllerAs: "followingControllerModel"
             })
             .state("profile.reviews", {
                 url: "/:userId/reviews",
-                templateUrl: "views/users/profile/reviews.view.html",
+                templateUrl: "views/user/profile/reviews.view.client.html",
                 controller: "ReviewsController",
                 controllerAs: "reviewsControllerModel"
             })
             .state("profile.likes", {
                 url: "/:userId/likes",
-                templateUrl: "views/users/profile/likes.view.html",
+                templateUrl: "views/user/profile/likes.view.client.html",
                 controller: "LikesController",
                 controllerAs: "likesControllerModel"
             })
             .state("admin", {
                 url: "/admin",
-                templateUrl: "views/admin/admin.view.html",
+                templateUrl: "views/admin/admin.view.client.html",
                 controller: "AdminController",
                 controllerAs: "adminControllerModel",
                 resolve: {
@@ -135,7 +135,6 @@
             .getCurrentUser()
             .then(function (response) {
                 var user = response.data;
-
                 if (user) {
                     UserService.setCurrentUser(user);
                     deferred.resolve();

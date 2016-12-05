@@ -32,7 +32,7 @@
         }
 
         function home() {
-            $location.url("/home");
+            $state.go("home");
         }
 
     }

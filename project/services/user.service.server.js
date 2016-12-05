@@ -202,9 +202,9 @@ module.exports = function (app, models) {
             .isLiked(userId, mid)
             .then(function (user) {
                 if (user) {
-                    res.sendStatus(200);
+                    res.status(200).send("yes yes");
                 } else {
-                    res.sendStatus(404);
+                    res.sendStatus(200);
                 }
             }, function (err) {
                 res.status(400).send(err);
@@ -254,9 +254,9 @@ module.exports = function (app, models) {
             .isFollowing(userId, followingId)
             .then(function (user) {
                 if (user) {
-                    res.sendStatus(200);
+                    res.status(200).send("yes yes");
                 } else {
-                    res.sendStatus(404);
+                    res.sendStatus(200);
                 }
             }, function (err) {
                 res.status(400).send(err);
@@ -340,6 +340,7 @@ module.exports = function (app, models) {
     function updateUser(req, res) {
         var userId = req.params['uid'];
         var user = req.body;
+        user.password = bcrypt.hashSync(user.password);
         userModel
             .updateUser(userId, user)
             .then(function (stats) {

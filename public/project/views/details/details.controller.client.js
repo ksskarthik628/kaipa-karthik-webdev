@@ -176,13 +176,11 @@
                     var status = response.data;
                     console.log(status);
                     // vm.success = "Review updated!";
-                    if ((status.n == 1 || status.nModified == 1) && status.ok == 1) {
-                        vm.reviews[vm.selectedIndex] = review;
-                        vm.selectedIndex = -1;
-                        vm.review = {};
-                        findUserByReviewUserId();
-                        movieAvgRatingByMovieId();
-                    }
+                    vm.reviews[vm.selectedIndex] = review;
+                    vm.selectedIndex = -1;
+                    vm.review = {};
+                    findUserByReviewUserId();
+                    movieAvgRatingByMovieId();
                 }, function (err) {
                     // vm.alert = err;
                 });

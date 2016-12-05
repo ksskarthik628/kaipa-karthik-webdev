@@ -1,0 +1,110 @@
+<div class="row text-center">
+    <div class="col-xs-4 col-sm-6"></div>
+    <div class="col-xs-4 col-sm-3">
+        <a ui-sref="profile.followers({userId: model.currentUser._id})">
+            <div class="row">
+                <h5>
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    Followers
+                </h5>
+            </div>
+            <div class="row">
+                {{model.currentUser.followers.length}}
+            </div>
+        </a>
+    </div>
+    <div class="col-xs-4 col-sm-3">
+        <a ui-sref="profile.following({userId: model.currentUser._id})">
+            <div class="row">
+                <h5>
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    Following
+                </h5>
+            </div>
+            <div class="row">
+                {{model.currentUser.following.length}}
+            </div>
+        </a>
+    </div>
+</div>
+
+<h1 class="page-header less-top-margin">Profile</h1>
+
+<div>
+    <form action="{{model.updateProfileApi}}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                    </span>
+                <input type="text" class="form-control" placeholder="Username"
+                       name="username"
+                       value="{{model.user.username}}" readonly autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-option-horizontal"></i>
+                    </span>
+                <input type="text" class="form-control" placeholder="First Name"
+                       name="firstName"
+                       value="{{model.user.firstName}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-option-horizontal"></i>
+                    </span>
+                <input type="text" class="form-control" placeholder="Last Name"
+                       name="lastName"
+                       value="{{model.user.lastName}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-lock"></i>
+                    </span>
+                <input type="password" class="form-control" placeholder="Password"
+                       name="password"
+                       value="{{model.user.password}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-earphone"></i>
+                    </span>
+                <input type="text" class="form-control" placeholder="Phone Number"
+                       name="phone"
+                       value="{{model.user.phone}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-envelope"></i>
+                    </span>
+                <input type="email" class="form-control" placeholder="Email"
+                       name="email"
+                       value="{{model.user.email}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-upload"></i>
+                    </span>
+                <input type="file" class="form-control"
+                       name="profileImg">
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit"
+                    class="btn btn-success btn-block">Update
+            </button>
+        </div>
+    </form>
+</div>

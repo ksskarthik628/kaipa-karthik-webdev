@@ -14,6 +14,7 @@ module.exports = function (mongoose) {
     return api;
 
     function addMovie(movie) {
+        movie.movieId = movie.id.toString();
         return BBBMovie.create(movie);
     }
     

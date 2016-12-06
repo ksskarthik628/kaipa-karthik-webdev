@@ -8,7 +8,7 @@
                 <span class="label label-default pull-left">Release: {{detailsControllerModel.movie.release_date}}</span>
                 <h2>
                     {{detailsControllerModel.movie.title}}
-                    <span ng-show="user._id">
+                    <span ng-show="detailsControllerModel.user._id">
                         <a href=""
                            ng-click="detailsControllerModel.likeMovie()"
                            ng-hide="detailsControllerModel.isLiked">
@@ -20,12 +20,12 @@
                             <i class="fa fa-thumbs-up green"></i>
                         </a>
                     </span>
-                    <span ng-show="!user._id">
+                    <span ng-hide="detailsControllerModel.user._id">
                         <a href=""
                            data-toggle="tooltip"
                            data-placement="top"
                            title="Please login to like!"
-                           ng-disabled="!user._id">
+                           ng-disabled="!detailsControllerModel.user._id">
                             <i class="fa fa-thumbs-o-up orange"></i>
                         </a>
                     </span>
@@ -139,14 +139,14 @@
                         </span>
                                     </small>
                                 </h4>
-                                <h4 class="media-heading" ng-show="user">
+                                <h4 class="media-heading" ng-show="detailsControllerModel.user">
                                     <small>By
-                                        <a ui-sref="profile.reviews({userId: review.userId})">{{review.userFirstName}}</a>
+                                        <a ui-sref="profile.reviews({userId: review._user})">{{review.userFirstName}}</a>
                                         on
                                         {{review.timestamp | date : 'mediumDate'}}
                                     </small>
                                 </h4>
-                                <h4 class="media-heading" ng-show="!user">
+                                <h4 class="media-heading" ng-show="!detailsControllerModel.user">
                                     <small>By
                                         <a href=""
                                            data-toggle="tooltip"
@@ -181,13 +181,13 @@
 
                         <div class="btn-group-md pull-right">
                             <a href="" class="btn btn-warning" role="button"
-                               ng-if="detailsControllerModel.selectedIndex !== $index && detailsControllerModel.user._id == review.userId"
+                               ng-if="detailsControllerModel.selectedIndex !== $index && detailsControllerModel.user._id == review._user"
                                ng-click="detailsControllerModel.selectReview($index)">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                                 Edit
                             </a>
                             <a href="" class="btn btn-danger" role="button"
-                               ng-if="detailsControllerModel.selectedIndex !== $index && detailsControllerModel.user._id == review.userId"
+                               ng-if="detailsControllerModel.selectedIndex !== $index && detailsControllerModel.user._id == review._user"
                                ng-click="detailsControllerModel.deleteReview($index)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                                 Delete
@@ -215,10 +215,10 @@
                     <textarea class="form-control" rows="3" placeholder="Please enter description of the review"
                               ng-model="detailsControllerModel.review.description"></textarea>
                             </div>
-                            <a href="" class="btn btn-success" ng-show="user._id"
+                            <a href="" class="btn btn-success" ng-show="detailsControllerModel.user._id"
                                ng-click="detailsControllerModel.addReview(detailsControllerModel.review)"
                                role="button">Submit</a>
-                            <a href="" class="btn btn-warning" ng-show="!user._id" ng-disabled="!user._id"
+                            <a href="" class="btn btn-warning" ng-show="!detailsControllerModel.user._id" ng-disabled="!detailsControllerModel.user._id"
                                role="button">Please login to review!</a>
                         </form>
                     </div>

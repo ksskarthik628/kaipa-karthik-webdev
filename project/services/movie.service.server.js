@@ -11,7 +11,7 @@ module.exports = function (app, models) {
             .then(function (movie) {
                 res.json(movie);
             }, function (err) {
-                res.status(400).send(err);
+                res.sendStatus(200);
             });
     }
 

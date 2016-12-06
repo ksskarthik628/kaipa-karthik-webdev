@@ -45,7 +45,7 @@ module.exports = function (app, models, security) {
 
     function authorized(req, res, next) {
         if (!req.isAuthenticated()) {
-            res.send(401);
+            res.sendStatus(401);
         } else {
             next();
         }
@@ -130,9 +130,9 @@ module.exports = function (app, models, security) {
             .isLiked(userId, mid)
             .then(function (user) {
                 if (user) {
-                    res.status(200).send("yes yes");
-                } else {
                     res.sendStatus(200);
+                } else {
+                    res.sendStatus(404);
                 }
             }, function (err) {
                 res.status(400).send(err);
@@ -182,9 +182,9 @@ module.exports = function (app, models, security) {
             .isFollowing(userId, followingId)
             .then(function (user) {
                 if (user) {
-                    res.status(200).send("yes yes");
-                } else {
                     res.sendStatus(200);
+                } else {
+                    res.sendStatus(404);
                 }
             }, function (err) {
                 res.status(400).send(err);
@@ -244,9 +244,9 @@ module.exports = function (app, models, security) {
     
     function uploadUserImage(req, res) {
         var userId = req.params['uid'];
-        var image = req.file;
+        var profilePic = req.file;
         var user = {
-            imgUrl: '/uploads/' + image.filename
+            imgUrl: '/uploads/' + profilePic.filename
         };
 
         userModel
@@ -304,7 +304,7 @@ module.exports = function (app, models, security) {
         var user = req.user;
         if (isAdmin(user)) {
             var newUser = req.body;
-            user.password = bcrypt.hashSync(newUser.password);
+            newUser.password = bcrypt.hashSync(newUser.password);
             userModel
                 .createUser(newUser)
                 .then(function (user) {

@@ -70,11 +70,11 @@ module.exports = function (mongoose) {
     }
 
     function removeFollowing(userId, followingId) {
-        return BBBUser.update({_id: userId}, {$pullAll: {following: followingId}});
+        return BBBUser.update({_id: userId}, {$pullAll: {following: [followingId]}});
     }
 
     function removeFollower(userId, followerId) {
-        return BBBUser.update({_id: userId}, {$pullAll: {followers: followerId}});
+        return BBBUser.update({_id: userId}, {$pullAll: {followers: [followerId]}});
     }
     
     function isFollowing(userId, followId) {

@@ -42,41 +42,14 @@
         init();
 
         function isAlreadyFollowing(users) {
-            var promiseArray = [];
-            var result = [];
 
-            users.forEach(function (element, index, array) {
-                promiseArray
-                    .push(
-                        UserService
-                            .isAlreadyFollowing(vm.user._id, element._id)
-                            .then(
-                                function (response) {
-                                    var user = element;
-
-                                    if (user._id != vm.user._id) {
-                                        if (response.data) {
-                                            user.alreadyFollowing = true;
-                                        }
-                                        else {
-                                            user.alreadyFollowing = false;
-                                        }
-                                    }
-                                    else {
-                                        user.itsMe = true;
-                                    }
-
-                                    result.push(user);
-                                },
-                                function (err) {
-                                    console.log(err);
-                                })
-                    );
+            users.forEach(function (user, index, array) {
+                user.alreadyFollowing = (vm.user.following.indexOf(user._id) > -1);
+                user.itsMe = (vm.user._id === user._id);
             });
 
-            $q.all(promiseArray).then(function () {
-                vm.users = result;
-            });
+            vm.users = users;
+
         }
         
         function follow(index) {

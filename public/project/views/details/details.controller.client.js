@@ -195,13 +195,11 @@
                     var status = response.data;
                     console.log(status);
                     // vm.success = "Review deleted!";
-                    if (status.n == 1 && status.ok == 1) {
-                        vm.reviews.splice(index, 1);
-                        vm.selectedIndex = -1;
-                        vm.review = {};
-                        findUserByReviewUserId();
-                        movieAvgRatingByMovieId();
-                    }
+                    vm.reviews.splice(index, 1);
+                    vm.selectedIndex = -1;
+                    vm.review = {};
+                    findUserByReviewUserId();
+                    movieAvgRatingByMovieId();
                 }, function (err) {
                     // vm.alert = err;
                 });
@@ -231,10 +229,8 @@
                     var status = response.data;
                     console.log(status);
                     // vm.success = "Movie Liked";
-                    if ((status.n == 1 || status.nModified == 1) && status.ok == 1) {
-                        vm.isLiked = true;
-                        return MovieService.addMovie(vm.movie);
-                    }
+                    vm.isLiked = true;
+                    return MovieService.addMovie(vm.movie);
                 }, function (err) {
                     // vm.alert = err;
                 })
@@ -247,14 +243,12 @@
 
         function unlikeMovie() {
             UserService
-                .unlikeMovie(vm.user._id, vm.movieId)
+                .unlike(vm.user._id, vm.movieId)
                 .then(function (response) {
                     var status = response.data;
                     console.log(status);
                     // vm.success = "Movie unliked";
-                    if ((status.n == 1 || status.nModified == 1) && status.ok == 1) {
-                        vm.isLiked = false;
-                    }
+                    vm.isLiked = false;
                 }, function (err) {
                     // vm.alert = err;
                 });
@@ -262,18 +256,9 @@
 
         function isLiked() {
             if (vm.user) {
-                UserService
-                    .isLiked(vm.user._id, vm.movieId)
-                    .then(function (response) {
-                        var user = response.data;
-                        if (user) {
-                            console.log(user);
-                            vm.isLiked = true;
-                        }
-                        else {
-                            vm.isLiked = false;
-                        }
-                    });
+                vm.isLiked = (vm.user.movieLikes.indexOf(vm.movieId) > -1);
+            } else {
+                vm.isLiked = false;
             }
         }
 

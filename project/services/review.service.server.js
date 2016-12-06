@@ -3,7 +3,7 @@ module.exports = function (app, models) {
     var movieModel = models.movieModel;
     var reviewModel = models.reviewModel;
 
-    var bluebird = require('bluebird');
+    var q = require('q');
 
     app.post('/bbb/user/:uid/movie/:mid', addReview);
     app.get('/bbb/movie/:mid/reviews', findAllReviewsForMovieId);
@@ -48,15 +48,17 @@ module.exports = function (app, models) {
                             .findMovieByMovieId(review.movieId)
                             .then(function (movie) {
                                 if (movie) {
-                                    review.movie = movie;
-                                    result.push(review);
+                                    var jsonString = JSON.stringify(review);
+                                    var jsonStringNew = jsonString;
+                                    var newReview = JSON.parse(jsonStringNew);
+                                    newReview.movie = movie;
+                                    result.push(newReview);
                                 }
                             }, function (err) {
                                 console.log(err);
                             }));
                 });
-                bluebird
-                    .all(promiseArray)
+                q.all(promiseArray)
                     .then(function () {
                         res.json(result);
                     });

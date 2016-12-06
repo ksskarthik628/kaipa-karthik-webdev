@@ -36,43 +36,32 @@
         init();
 
         function isAlreadyFollowing() {
-            UserService
-                .isFollowing(vm.user._id, vm.navUserId)
-                .then(function (response) {
-                    if (response.data) {
-                        vm.alreadyFollowing = true;
-                    }
-                    else {
-                        vm.alreadyFollowing = false;
-                    }
-                });
+            vm.alreadyFollowing = (vm.user.following.indexOf(vm.navUserId) > -1);
         }
 
-        function follow(index) {
-            var userId = vm.users[index]._id;
+        function follow() {
             UserService
-                .follow(vm.user._id, userId)
+                .follow(vm.user._id, vm.navUserId)
                 .then(function (response) {
                     var status = response.data;
                     console.log(status);
-                    vm.users[index].alreadyFollowing = true;
+                    vm.alreadyFollowing = true;
                 }, function (err) {
                     console.log(err);
-                    vm.users[index].alreadyFollowing = false;
+                    vm.alreadyFollowing = false;
                 });
         }
 
-        function unfollow(index) {
-            var userId = vm.users[index]._id;
+        function unfollow() {
             UserService
-                .unfollow(vm.user._id, userId)
+                .unfollow(vm.user._id, vm.navUserId)
                 .then(function (response) {
                     var status = response.data;
                     console.log(status);
-                    vm.users[index].alreadyFollowing = false;
+                    vm.alreadyFollowing = false;
                 }, function (err) {
                     console.log(err);
-                    vm.users[index].alreadyFollowing = true;
+                    vm.alreadyFollowing = true;
                 });
         }
 

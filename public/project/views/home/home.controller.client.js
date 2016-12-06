@@ -92,8 +92,10 @@
         }
 
         function eventHandler(event, movieTitle) {
-            if (event.keyCode === 13) {
-                $state.go("home.result", {movieTitle: movieTitle});
+            if (movieTitle !== "") {
+                if (event.keyCode === 13) {
+                    $state.go("home.result", {movieTitle: movieTitle});
+                }
             }
         }
 

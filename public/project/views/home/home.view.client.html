@@ -3,10 +3,11 @@
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="container">
             <div class="carousel-caption">
-                <h1 class="brandname">Big Bucket of Blockbusters</h1>
-                <p>Reach into the bottomless bucket</p>
+                <h1 id="myBrand" class="brandname">Big Bucket of Blockbusters</h1>
+                <p id="myCaption">Reach into the bottomless bucket</p>
                 <div class="input-group">
                     <input type="text" class="form-control search-box"
+                           id="mySearchBox"
                            ng-model="homeControllerModel.movie.title"
                            ng-keypress="homeControllerModel.eventHandler($event, homeControllerModel.movie.title)"
                            placeholder="Search for a movie by title">

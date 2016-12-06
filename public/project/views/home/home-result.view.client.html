@@ -15,7 +15,7 @@
      infinite-scroll-distance="1">
     <div ng-repeat="movie in homeResultControllerModel.movies">
         <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
+            <div class="thumbnail box">
                 <span class="label label-default pull-right">Release: {{movie.release_date}}</span>
                 <a ui-sref="details({movieId: movie.id})">
                     <div class="caption">
@@ -28,8 +28,9 @@
                 </div>
                 <hr class="nomargin">
                 <div class="caption">
-                    <h5 class="text-muted">
-                        {{movie.genres[0] + " " + movie.genres[1] + " " + movie.genres[2]}}</h5>
+                    <div class="chip">
+                        {{movie.genres[0] + " " + movie.genres[1] + " " + movie.genres[2]}}
+                    </div>
                 </div>
             </div>
         </div>

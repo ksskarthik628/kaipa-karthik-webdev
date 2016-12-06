@@ -31,6 +31,7 @@
                             vm.error = "Unable to create user";
                     });
             }
+            vm.error = "Please fill all details";
         }
 
         function redirectToProfile(user) {

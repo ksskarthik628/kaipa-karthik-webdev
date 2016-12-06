@@ -245,9 +245,11 @@ module.exports = function (app, models, security) {
     function uploadUserImage(req, res) {
         var userId = req.params['uid'];
         var profilePic = req.file;
-        var user = {
-            imgUrl: '/uploads/' + profilePic.filename
-        };
+        var user = req.body;
+
+        if (profilePic) {
+            user.imgUrl = '/uploads/' + profilePic.filename;
+        }
 
         userModel
             .updateUser(userId, user)

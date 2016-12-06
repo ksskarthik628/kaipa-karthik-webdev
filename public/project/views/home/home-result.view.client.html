@@ -16,22 +16,21 @@
     <div ng-repeat="movie in homeResultControllerModel.movies">
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail box">
-                <span class="label label-default pull-right">Release: {{movie.release_date}}</span>
                 <a ui-sref="details({movieId: movie.id})">
                     <div class="caption">
-                        <h3>{{movie.title | limitTo:18}}{{movie.title.length > 18 ? "..." : ""}}</h3>
+                        <h4>{{movie.title | limitTo:26}}{{movie.title.length > 26 ? "..." : ""}}</h4>
                     </div>
                     <img class="img-responsive" ng-src="{{movie.imageUrl}}"/>
-                </a>
-                <div class="caption">
-                    <h5>{{movie.overview | limitTo:28}}{{movie.overview.length > 28 ? "..." : ""}}</h5>
-                </div>
-                <hr class="nomargin">
-                <div class="caption">
-                    <div class="chip">
-                        {{movie.genres[0] + " " + movie.genres[1] + " " + movie.genres[2]}}
+                    <div class="caption">
+                        <h5>Release: {{movie.release_date}}</h5>
                     </div>
-                </div>
+                    <hr class="nomargin">
+                    <div class="caption">
+                        <div class="chip">
+                            {{movie.genres[0] + " " + movie.genres[1] + " " + movie.genres[2]}}
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

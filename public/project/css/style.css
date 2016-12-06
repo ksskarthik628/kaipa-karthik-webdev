@@ -8,11 +8,21 @@
     }
 
     .brandname {
-        font-size: 36px;
+        font-size: 18px;
     }
 
     .carousel-caption {
         margin-bottom: 20px;
+    }
+
+    #myCaption {
+        display: none;
+    }
+
+    .chip {
+        height: 30px;
+        font-size: 10px;
+        line-height: 30px;
     }
 }
 
@@ -26,11 +36,21 @@
     }
 
     .brandname {
-        font-size: 36px;
+        font-size: 24px;
     }
 
     .carousel-caption {
         margin-bottom: 30px;
+    }
+
+    #myCaption {
+        display: none;
+    }
+
+    .chip {
+        height: 35px;
+        font-size: 12px;
+        line-height: 35px;
     }
 }
 
@@ -44,11 +64,17 @@
     }
 
     .brandname {
-        font-size: 36px;
+        font-size: 30px;
     }
 
     .carousel-caption {
         margin-bottom: 40px;
+    }
+
+    .chip {
+        height: 40px;
+        font-size: 12px;
+        line-height: 40px;
     }
 }
 
@@ -67,6 +93,12 @@
 
     .carousel-caption {
         margin-bottom: 50px;
+    }
+
+    .chip {
+        height: 50px;
+        font-size: 14px;
+        line-height: 50px;
     }
 }
 
@@ -228,9 +260,6 @@ body {
 .chip {
     display: inline-block;
     padding: 0 25px;
-    height: 50px;
-    font-size: 14px;
-    line-height: 50px;
     border-radius: 25px;
     background-color: #a4a4a4;
 }
@@ -241,4 +270,8 @@ body {
 
 .headClass {
     box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
+}
+
+a:hover {
+    text-decoration: none;
 }

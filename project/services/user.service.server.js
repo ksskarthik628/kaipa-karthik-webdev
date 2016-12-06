@@ -16,7 +16,7 @@ module.exports = function (app, models, security) {
     app.post('/bbb/register', register);
     app.get('/bbb/loggedin', loggedIn);
     app.get('/bbb/auth/facebook', passport.authenticate('bbbFacebook', {scope: 'email'}));
-    app.get('/bbb/auth/callback',
+    app.get('/bbb/auth/facebook/callback',
         passport.authenticate('bbbFacebook', {
             successRedirect: '/project/#/user',
             failureRedirect: '/project/#/login'

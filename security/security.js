@@ -11,9 +11,9 @@ module.exports = function (database, passport) {
     };
 
     var bbbFacebookConfig = {
-        clientID: process.env.WAM_FACEBOOK_CLIENT_ID,
-        clientSecret: process.env.WAM_FACEBOOK_CLIENT_SECRET,
-        callbackURL: process.env.WAM_FACEBOOK_CALLBACK_URL
+        clientID: process.env.BBB_FACEBOOK_CLIENT_ID,
+        clientSecret: process.env.BBB_FACEBOOK_CLIENT_SECRET,
+        callbackURL: process.env.BBB_FACEBOOK_CALLBACK_URL
     };
 
     var assignmentModel = database.wamModels().userModel;

@@ -1,31 +1,18 @@
-module.exports = function (app, models) {
+module.exports = function (app, models, security) {
 
     var userModel = models.userModel;
-    var passport = require('passport');
-    var LocalStrategy = require('passport-local').Strategy;
-    var FacebookStrategy = require('passport-facebook').Strategy;
-    var bcrypt = require('bcrypt-nodejs');
     var auth = authorized;
-
-    var facebookConfig = {
-        clientID: process.env.FACEBOOK_CLIENT_ID,
-        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL: process.env.FACEBOOK_CALLBACK_URL
-    };
-
-    passport.use(new LocalStrategy(localStrategy));
-    passport.use('facebook', new FacebookStrategy(facebookConfig, facebookStrategy));
-    passport.serializeUser(serializeUser);
-    passport.deserializeUser(deserializeUser);
+    var bcrypt = security.getBCrypt();
+    var passport = security.getPassport();
 
     // Login and logout requests
-    app.post("/api/login", passport.authenticate('local'), login);
+    app.post("/api/login", passport.authenticate('wam'), login);
     app.post("/api/logout", logout);
     app.post("/api/register", register);
     app.get("/api/loggedin", loggedIn);
-    app.get("/auth/facebook", passport.authenticate('facebook', {scope: 'email'}));
+    app.get("/auth/facebook", passport.authenticate('wamFacebook', {scope: 'email'}));
     app.get("/auth/facebook/callback",
-        passport.authenticate('facebook', {
+        passport.authenticate('wamFacebook', {
             successRedirect: '/assignment/#/user',
             failureRedirect: '/assignment/#/login'
         }));
@@ -37,71 +24,12 @@ module.exports = function (app, models) {
     app.put("/api/user/:uid", auth, updateUser);
     app.delete("/api/user/:uid", auth, deleteUser);
 
-    function localStrategy(username, password, done) {
-        userModel
-            .findUserByUsername(username)
-            .then(function (user) {
-                if (user && bcrypt.compareSync(password, user.password)) {
-                    return done(null, user);
-                } else {
-                    return done(null, false);
-                }
-            }, function (err) {
-                if (err) {
-                    return done(err);
-                }
-            });
-    }
-    
-    function facebookStrategy(token, refreshToken, profile, done) {
-        userModel
-            .findUserByFacebookId(profile.id)
-            .then(function (user) {
-                if (user) {
-                    return done(null, user);
-                } else {
-                    var newUser = {
-                        username: profile.displayName.replace(/ /g, ""),
-                        facebook: {
-                            token: token,
-                            id: profile.id
-                        }
-                    };
-                    userModel
-                        .createUser(newUser)
-                        .then(function (user) {
-                            return done(null, user);
-                        }, function (err) {
-                            console.log(err);
-                            return done(err, null);
-                        });
-                }
-            }, function (err) {
-                console.log(err);
-                return done(err, null);
-            });
-    }
-
     function authorized (req, res, next) {
         if (!req.isAuthenticated()) {
             res.send(401);
         } else {
             next();
         }
-    }
-
-    function serializeUser(user, done) {
-        done(null, user);
-    }
-
-    function deserializeUser(user, done) {
-        userModel
-            .findUserById(user._id)
-            .then(function (user) {
-                done(null, user);
-            }, function (err) {
-                done(err, null);
-            });
     }
     
     function login(req, res) {

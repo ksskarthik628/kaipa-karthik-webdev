@@ -1,8 +1,6 @@
-module.exports = function () {
+module.exports = function (mongoose) {
 
-    var mongoose = require('mongoose');
-    mongoose.Promise = require('bluebird');
-    var MovieSchema = require('./movie.schema.server')();
+    var MovieSchema = require('./movie.schema.server')(mongoose);
     var BBBMovie = mongoose.model('BBBMovie', MovieSchema);
 
     var api = {

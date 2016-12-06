@@ -1,41 +1,28 @@
-module.exports = function (app, models) {
+module.exports = function (app, models, security) {
 
     var movieModel = models.movieModel;
     var userModel = models.userModel;
 
-    var bcrypt = require('bcrypt-nodejs');
-    var FacebookStrategy = require('passport-facebook').Strategy;
-    var LocalStrategy = require('passport-local').Strategy;
+    var bcrypt = security.getBCrypt();
     var multer = require('multer');
-    var passport = require('passport');
+    var passport = security.getPassport();
 
     var auth = authorized;
-    var facebookConfig = {
-        clientID: process.env.FACEBOOK_CLIENT_ID,
-        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL: process.env.FACEBOOK_CALLBACK_URL
-    };
     var upload = multer({dest: __dirname + '/../../public/uploads'});
 
-    passport.use(new LocalStrategy(localStrategy));
-    passport.use('facebook', new FacebookStrategy(facebookConfig, facebookStrategy));
-    passport.serializeUser(serializeUser);
-    passport.deserializeUser(deserializeUser);
-
     // Login and logout requests
-    app.post('/bbb/login', passport.authenticate('local'), login);
+    app.post('/bbb/login', passport.authenticate('bbb'), login);
     app.post('/bbb/logout', logout);
     app.post('/bbb/register', register);
     app.get('/bbb/loggedin', loggedIn);
-    app.get('/bbb/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
+    app.get('/bbb/auth/facebook', passport.authenticate('bbbFacebook', {scope: 'email'}));
     app.get('/bbb/auth/callback',
-        passport.authenticate('facebook', {
+        passport.authenticate('bbbFacebook', {
             successRedirect: '/project/#/user',
             failureRedirect: '/project/#/login'
         }));
 
     // CRUD requests
-    // app.post('/bbb/user', createUser);
     app.get('/bbb/user/:uid', findUserById);
     app.put('/bbb/user/:uid/movie/:mid/like', likeMovie);
     app.put('/bbb/user/:uid/movie/:mid/unlike', unlikeMovie);
@@ -62,65 +49,6 @@ module.exports = function (app, models) {
         } else {
             next();
         }
-    }
-
-    function localStrategy(username, password, done) {
-        userModel
-            .findUserByUsername(username)
-            .then(function (user) {
-                if (user && bcrypt.compareSync(password, user.password)) {
-                    return done(null, user);
-                } else {
-                    return done(null, false);
-                }
-            }, function (err) {
-                if (err) {
-                    return done(err);
-                }
-            });
-    }
-
-    function facebookStrategy(token, refreshToken, profile, done) {
-        userModel
-            .findUserByFacebookId(profile.id)
-            .then(function (user) {
-                if (user) {
-                    return done(null, user);
-                } else {
-                    var newUser = {
-                        username: profile.displayName.replace(/ /g, ""),
-                        facebook: {
-                            token: token,
-                            id: profile.id
-                        }
-                    };
-                    userModel
-                        .createUser(newUser)
-                        .then(function (user) {
-                            return done(null, user);
-                        }, function (err) {
-                            console.log(err);
-                            return done(err, null);
-                        });
-                }
-            }, function (err) {
-                console.log(err);
-                return done(err, null);
-            });
-    }
-
-    function serializeUser(user, done) {
-        done(null, user);
-    }
-
-    function deserializeUser(user, done) {
-        userModel
-            .findUserById(user._id)
-            .then(function (user) {
-                done(null, user);
-            }, function (err) {
-                done(err, null);
-            });
     }
 
     function login(req, res) {

@@ -1,6 +1,5 @@
-module.exports = function () {
+module.exports = function (mongoose) {
 
-    var mongoose = require('mongoose');
     var MovieSchema = mongoose.Schema({
         movieId: String,
         title: String,

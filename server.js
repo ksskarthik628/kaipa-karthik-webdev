@@ -3,6 +3,8 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
+var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 
 var app = express();
 var secret = "This is a secret for local deployment";
@@ -21,18 +23,10 @@ app.use(passport.session());
 
 app.use(express.static(__dirname + '/public'));
 
-var connectionString = 'mongodb://127.0.0.1:27017/wamlocal';
-
-if(process.env.WEB_CONCURRENCY ) {
-    connectionString = process.env.MONGODB_URI;
-}
-
-var mongoose = require("mongoose");
-mongoose.connect(connectionString);
-
-// require("./test/app.js")(app);
-require("./assignment/app")(app);
-require("./project/app")(app);
+var database = require('./database/database')(mongoose);
+var security = require('./security/security')(database, passport);
+require("./assignment/app")(app, database, security);
+require("./project/app")(app, database, security);
 
 var port = process.env.PORT || 3000;
 

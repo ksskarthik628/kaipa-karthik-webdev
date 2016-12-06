@@ -1,6 +1,5 @@
-module.exports = function () {
+module.exports = function (mongoose) {
 
-    var mongoose = require('mongoose');
     var WebsiteSchema = mongoose.Schema({
         _user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
         name: {type: String, required: true},

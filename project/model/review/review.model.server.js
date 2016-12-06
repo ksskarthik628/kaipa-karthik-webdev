@@ -1,8 +1,6 @@
-module.exports = function () {
+module.exports = function (mongoose) {
 
-    var mongoose = require('mongoose');
-    mongoose.Promise = require('bluebird');
-    var ReviewSchema = require('./review.schema.server')();
+    var ReviewSchema = require('./review.schema.server')(mongoose);
     var BBBReview = mongoose.model('BBBReview', ReviewSchema);
 
     var api = {

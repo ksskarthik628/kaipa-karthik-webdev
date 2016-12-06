@@ -1,8 +1,6 @@
-module.exports = function () {
+module.exports = function (mongoose) {
 
-    var mongoose = require('mongoose');
-    mongoose.Promise = require('bluebird');
-    var PageSchema = require('./page.schema.server')();
+    var PageSchema = require('./page.schema.server')(mongoose);
     var Page = mongoose.model('Page', PageSchema);
 
     var api = {

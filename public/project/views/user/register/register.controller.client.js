@@ -30,8 +30,9 @@
                         else
                             vm.error = "Unable to create user";
                     });
+            } else {
+                vm.error = "Please fill all details";
             }
-            vm.error = "Please fill all details";
         }
 
         function redirectToProfile(user) {

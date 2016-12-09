@@ -57,6 +57,11 @@ module.exports = function (app, models, security) {
                         }
                     });
                 }
+            }, function (error) {
+                if (error.code === 11000)
+                    res.status(409).send("Duplicate username");
+                else
+                    res.status(400).send(error);
             });
     }
     

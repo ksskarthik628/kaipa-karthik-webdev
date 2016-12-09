@@ -28,7 +28,8 @@
             <div class="bottom-margin" ng-show="sidebarControllerModel.user._id != sidebarControllerModel.navUserId"></div>
         </div>
 
-        <li ui-sref-active="active" ng-show="sidebarControllerModel.user" ng-hide="sidebarControllerModel.user._id != sidebarControllerModel.navUserId">
+        <li ui-sref-active="active" ng-show="sidebarControllerModel.user._id == sidebarControllerModel.navUserId"
+            ng-hide="sidebarControllerModel.user._id != sidebarControllerModel.navUserId">
             <a ui-sref=".edit-profile({userId: profileControllerModel.userId})">
                 <i class="fa fa-cog" aria-hidden="true"></i>
                 Edit Profile

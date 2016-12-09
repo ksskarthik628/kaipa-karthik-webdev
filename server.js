@@ -27,6 +27,7 @@ var database = require('./database/database')(mongoose);
 var security = require('./security/security')(database, passport);
 require("./assignment/app")(app, database, security);
 require("./project/app")(app, database, security);
+require("./proxy/app")(app);
 
 var port = process.env.PORT || 3000;
 

@@ -1,6 +1,13 @@
 <h1 class="page-header">Admin</h1>
 <h2 class="sub-header">Manage Users</h2>
 
+<div class="row" ng-show="adminControllerModel.error">
+    <div class="alert alert-danger alert-box" role="alert">
+        <b>Error! </b>
+        {{adminControllerModel.error}}
+    </div>
+</div>
+
 <div class="table-responsive">
     <table class="table table-bordered table-striped">
         <thead>

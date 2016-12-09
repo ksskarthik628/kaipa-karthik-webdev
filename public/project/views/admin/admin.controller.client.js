@@ -33,10 +33,10 @@
                         .createUserByAdmin(user)
                         .then(handleSuccess, handleFailure);
                 } else {
-                    vm.alert = "Please enter username";
+                    vm.error = "Please enter username";
                 }
             } else {
-                vm.alert = "Please enter user details";
+                vm.error = "Please enter user details";
             }
 
         }
@@ -71,11 +71,14 @@
         }
 
         function handleFailure(err) {
-            vm.alert = err;
+            if (err.status === 409)
+                vm.error = "Username taken";
+            else
+                vm.error = "Unable to create user";
         }
 
         function clear() {
-            vm.alert = "";
+            vm.error = "";
             vm.success = "";
         }
 

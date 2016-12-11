@@ -33,13 +33,13 @@
                     </h2>
 
                     <span class="h5" ng-show="detailsControllerModel.avgRating != 0">
-                Average Rating:
-                    <ng-rating ng-model="detailsControllerModel.avgRating"
-                               editable="false"
-                               show-grade="true">
-                    </ng-rating>
-            </span>
-
+                        Average Rating:
+                            <ng-rating ng-model="detailsControllerModel.avgRating"
+                                       editable="false"
+                                       show-grade="true">
+                            </ng-rating>
+                    </span>
+                    <br>
                     <div class="caption chip">
                         <span ng-repeat="genre in detailsControllerModel.movie.genres">
                             {{"#" + genre.name + " "}}

@@ -353,24 +353,24 @@ module.exports = function (app, models, security) {
                 .findUserById(newUser._id)
                 .then(function (gotUser) {
                     passChange = !(gotUser.password === newUser.password);
+                    if (passChange) {
+                        newUser.password = bcrypt.hashSync(newUser.password);
+                    }
+                    var newUserId = req.params['uid'];
+                    userModel
+                        .updateUser(newUserId, newUser)
+                        .then(function (stats) {
+                            return userModel
+                                .findAllUsers();
+                        }, function (err) {
+                            res.status(400).send(err);
+                        })
+                        .then(function (users) {
+                            res.json(users);
+                        }, function (err) {
+                            res.status(400).send(err);
+                        })
                 });
-            if (passChange) {
-                newUser.password = bcrypt.hashSync(newUser.password);
-            }
-            var newUserId = req.params['uid'];
-            userModel
-                .updateUser(newUserId, newUser)
-                .then(function (stats) {
-                    return userModel
-                        .findAllUsers();
-                }, function (err) {
-                    res.status(400).send(err);
-                })
-                .then(function (users) {
-                    res.json(users);
-                }, function (err) {
-                    res.status(400).send(err);
-                })
         } else {
             res.sendStatus(403);
         }

@@ -77,7 +77,7 @@
                 case 'wam':
                     $window.location.href = vm.address[0] + "//" + vm.address[2] + "/" + "assignment";
                     break;
-                case 'wc':
+                case 'bbb':
                     $window.location.href = vm.address[0] + "//" + vm.address[2] + "/" + "project";
                     break;
             }
